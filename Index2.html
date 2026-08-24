@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DataViz</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Data<span>Viz</span></div>
+
+    <button id="clearBtn">Clear</button>
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="badge">📊 SIMPLE DATA VISUALIZATION</div>
+
+        <h1>
+            Turn your data into
+            <span>beautiful charts.</span>
+        </h1>
+
+        <p>
+            Enter your information and instantly transform
+            numbers into clear, easy-to-understand visuals.
+        </p>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="section-heading">
+            <h2>Your Data</h2>
+            <p>Add categories and their values.</p>
+        </div>
+
+
+        <div class="settings">
+
+            <div>
+                <label>Chart title</label>
+
+                <input
+                    type="text"
+                    id="chartTitle"
+                    placeholder="Example: Monthly Expenses"
+                >
+            </div>
+
+
+            <div>
+                <label>Unit</label>
+
+                <select id="unit">
+
+                    <option value="">None</option>
+                    <option value="K">K (Kwacha)</option>
+                    <option value="$">$ (Dollar)</option>
+                    <option value="%">% (Percent)</option>
+                    <option value="hrs">Hours</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div id="dataRows"></div>
+
+
+        <button id="addRowBtn" class="secondary-btn">
+            + Add Data
+        </button>
+
+
+        <div class="chart-options">
+
+            <h2>Chart Type</h2>
+
+            <div class="chart-buttons">
+
+                <button class="chart-type active" data-type="pie">
+                    🥧 Pie
+                </button>
+
+                <button class="chart-type" data-type="bar">
+                    📊 Bar
+                </button>
+
+                <button class="chart-type" data-type="line">
+                    📈 Line
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <button id="generateBtn" class="generate-btn">
+            Generate Chart
+        </button>
+
+    </section>
+
+
+
+    <section class="chart-card">
+
+        <div class="chart-header">
+
+            <div>
+                <h2 id="displayTitle">Your Chart</h2>
+
+                <p id="totalText"></p>
+            </div>
+
+        </div>
+
+
+        <div class="chart-container">
+
+            <canvas id="myChart"></canvas>
+
+        </div>
+
+
+        <div class="chart-actions">
+
+            <button id="downloadBtn">
+                📥 Download
+            </button>
+
+            <button id="shareBtn">
+                📤 Share
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="about">
+
+        <h2>What is DataViz?</h2>
+
+        <p>
+            DataViz helps you turn numbers into visual information.
+            Use it for school, business, budgeting, research,
+            presentations and more.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>DataViz © 2026</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
