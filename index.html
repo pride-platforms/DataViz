@@ -1497,9 +1497,13 @@ aiAnalyzeBtn.addEventListener(
 
         if (data.length < 2) {
 
-            alert(
-                "Add at least two pieces of data first."
-            );
+    showNotification(
+        "Add at least two pieces of data first."
+    );
+
+    return;
+
+        }
 
             return;
 
