@@ -7,1225 +7,1822 @@
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
-    
-    <meta name="google-site-verification" content="-7c1UD-HXCz2O28k4OEAwAtDiqvghrZ5KJ6ZaquNcKU" />
-    <title>DataViz - Turn Data Into Visuals</title>
-    
-    <meta name="description" content="DataViz is a simple free data visualization tool that helps you turn your data into clear and useful charts.">
+
+    <meta
+        name="google-site-verification"
+        content="-7c1UD-HXCz2O28k4OEAwAtDiqvghrZ5KJ6ZaquNcKU"
+    >
+
+    <title>DataViz — Free Data Visualization Tool</title>
+
+    <meta
+        name="description"
+        content="DataViz is a simple free data visualization tool that helps you turn your data into clear and useful charts."
+    >
 
     <!-- Chart.js -->
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    <!-- =========================
-         CSS
-    ========================== -->
-<style>
-    * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <style>
 
-html {
-    scroll-behavior: smooth;
-}
+        /* =========================
+           RESET
+        ========================== */
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f8fafc;
-    color: #111827;
-    line-height: 1.5;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* HEADER */
 
-header {
-    height: 68px;
-    background: rgba(255, 255, 255, 0.96);
-    border-bottom: 1px solid #e5e7eb;
+        html {
+            scroll-behavior: smooth;
+        }
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    padding: 0 5%;
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-    position: sticky;
-    top: 0;
+            background: #f8fafc;
 
-    z-index: 100;
+            color: #111827;
 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-}
+            line-height: 1.5;
+        }
 
-.logo {
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -0.8px;
-}
 
-.logo span {
-    color: #6366f1;
-}
+        /* =========================
+           HEADER
+        ========================== */
 
-#clearBtn {
-    border: 1px solid #fecaca;
-    background: #fff5f5;
-    color: #dc2626;
+        header {
 
-    padding: 9px 16px;
+            height: 68px;
 
-    border-radius: 8px;
+            background: #ffffff;
 
-    font-size: 14px;
-    font-weight: 600;
+            border-bottom:
+                1px solid #e5e7eb;
 
-    cursor: pointer;
+            display: flex;
 
-    transition: 0.2s;
-}
+            align-items: center;
 
-#clearBtn:hover {
-    background: #fee2e2;
-}
+            justify-content:
+                space-between;
 
-/* MAIN */
+            padding:
+                0 5%;
 
-main {
-    width: 92%;
-    max-width: 900px;
-    margin: auto;
-}
+            position: sticky;
 
-/* HERO */
+            top: 0;
 
-.hero {
-    text-align: center;
+            z-index: 100;
 
-    padding: 70px 10px 50px;
-}
+            box-shadow:
+                0 2px 10px
+                rgba(0, 0, 0, 0.03);
+        }
 
-.badge {
-    display: inline-block;
 
-    background: #eef2ff;
-    color: #4f46e5;
+        .logo {
 
-    padding: 7px 13px;
+            font-size: 24px;
 
-    border-radius: 50px;
+            font-weight: 800;
 
-    font-size: 11px;
-    font-weight: 700;
+            letter-spacing:
+                -0.8px;
+        }
 
-    letter-spacing: 0.4px;
 
-    margin-bottom: 18px;
-}
+        .logo span {
 
-.hero h1 {
-    font-size: clamp(36px, 7vw, 54px);
+            color: #6366f1;
+        }
 
-    line-height: 1.1;
 
-    letter-spacing: -1.5px;
+        nav {
 
-    margin-bottom: 18px;
-}
+            display: flex;
 
-.hero h1 span {
-    color: #6366f1;
-}
+            gap: 25px;
+        }
 
-.hero p {
-    color: #64748b;
 
-    max-width: 590px;
+        nav a {
 
-    margin: auto;
+            text-decoration: none;
 
-    font-size: 16px;
+            color: #6b7280;
 
-    line-height: 1.7;
-}
+            font-size: 14px;
 
-/* CARDS */
+            font-weight: 600;
 
-.card,
-.chart-card,
-.about {
-    background: #ffffff;
+            transition: 0.2s;
+        }
 
-    border: 1px solid #e5e7eb;
 
-    border-radius: 14px;
+        nav a:hover {
 
-    padding: 26px;
+            color: #6366f1;
+        }
 
-    margin-bottom: 24px;
 
-    box-shadow:
-        0 4px 15px rgba(15, 23, 42, 0.04);
-}
+        #clearBtn {
 
-/* SECTION HEADINGS */
+            border:
+                1px solid #fecaca;
 
-.section-heading {
-    margin-bottom: 20px;
-}
+            background: #fff5f5;
 
-.section-heading h2 {
-    font-size: 21px;
-    color: #111827;
-}
+            color: #dc2626;
 
-.section-heading p {
-    color: #64748b;
+            padding:
+                9px 16px;
 
-    margin-top: 5px;
+            border-radius: 8px;
 
-    font-size: 14px;
-}
+            font-size: 14px;
 
-/* SETTINGS */
+            font-weight: 600;
 
-.settings {
-    display: grid;
+            cursor: pointer;
 
-    grid-template-columns: 2fr 1fr;
+            transition: 0.2s;
+        }
 
-    gap: 14px;
 
-    margin-bottom: 20px;
-}
+        #clearBtn:hover {
 
-label {
-    display: block;
+            background: #fee2e2;
+        }
 
-    font-size: 13px;
 
-    font-weight: 600;
+        /* =========================
+           MAIN
+        ========================== */
 
-    color: #374151;
+        main {
 
-    margin-bottom: 7px;
-}
+            width: 92%;
 
-input,
-select {
-    width: 100%;
+            max-width: 900px;
 
-    padding: 12px 13px;
+            margin: auto;
+        }
 
-    border: 1px solid #d1d5db;
 
-    border-radius: 8px;
+        /* =========================
+           HERO
+        ========================== */
 
-    font-size: 14px;
+        .hero {
 
-    background: #ffffff;
+            text-align: center;
 
-    color: #111827;
+            padding:
+                70px 10px 50px;
+        }
 
-    outline: none;
 
-    transition: 0.2s;
-}
+        .badge {
 
-input::placeholder {
-    color: #9ca3af;
-}
+            display: inline-block;
 
-input:focus,
-select:focus {
-    border-color: #6366f1;
+            background: #eef2ff;
 
-    box-shadow:
-        0 0 0 3px rgba(99, 102, 241, 0.1);
-}
+            color: #4f46e5;
 
-/* DATA ROWS */
+            padding:
+                7px 13px;
 
-.data-row {
-    display: grid;
+            border-radius: 50px;
 
-    grid-template-columns: 1fr 150px 42px;
+            font-size: 11px;
 
-    gap: 10px;
+            font-weight: 700;
 
-    margin-bottom: 10px;
-}
+            letter-spacing:
+                0.4px;
 
-.remove-btn {
-    border: 1px solid #fecaca;
+            margin-bottom: 18px;
+        }
 
-    background: #fff5f5;
 
-    color: #dc2626;
+        .hero h1 {
 
-    border-radius: 8px;
+            font-size:
+                clamp(36px, 7vw, 54px);
 
-    font-size: 18px;
+            line-height: 1.1;
 
-    cursor: pointer;
+            letter-spacing:
+                -1.5px;
 
-    transition: 0.2s;
-}
+            margin-bottom: 18px;
+        }
 
-.remove-btn:hover {
-    background: #fee2e2;
-}
 
-/* BUTTONS */
+        .hero h1 span {
 
-.secondary-btn {
-    width: 100%;
+            color: #6366f1;
+        }
 
-    padding: 12px;
 
-    background: #f5f3ff;
+        .hero p {
 
-    color: #4f46e5;
+            color: #64748b;
 
-    border: 1px solid #e0e7ff;
+            max-width: 590px;
 
-    border-radius: 8px;
+            margin: auto;
 
-    font-size: 14px;
+            font-size: 16px;
 
-    font-weight: 600;
+            line-height: 1.7;
+        }
 
-    cursor: pointer;
 
-    transition: 0.2s;
-}
+        /* =========================
+           CARDS
+        ========================== */
 
-.secondary-btn:hover {
-    background: #eef2ff;
-}
+        .card,
+        .chart-card,
+        .about {
 
-.generate-btn {
-    width: 100%;
+            background: #ffffff;
 
-    padding: 14px;
+            border:
+                1px solid #e5e7eb;
 
-    margin-top: 24px;
+            border-radius: 14px;
 
-    background: #6366f1;
+            padding: 26px;
 
-    color: #ffffff;
+            margin-bottom: 24px;
 
-    border: none;
+            box-shadow:
+                0 4px 15px
+                rgba(15, 23, 42, 0.04);
+        }
 
-    border-radius: 8px;
 
-    font-size: 15px;
+        /* =========================
+           HEADINGS
+        ========================== */
 
-    font-weight: 700;
+        .section-heading {
 
-    cursor: pointer;
+            margin-bottom: 20px;
+        }
 
-    transition: 0.2s;
 
-    box-shadow:
-        0 4px 10px rgba(99, 102, 241, 0.2);
-}
+        .section-heading h2 {
 
-.generate-btn:hover {
-    background: #4f46e5;
+            font-size: 21px;
+        }
 
-    transform: translateY(-1px);
-}
 
-/* CHART OPTIONS */
+        .section-heading p {
 
-.chart-options {
-    margin-top: 28px;
-}
+            color: #64748b;
 
-.chart-options h2 {
-    font-size: 18px;
+            margin-top: 5px;
 
-    margin-bottom: 12px;
-}
+            font-size: 14px;
+        }
 
-.chart-buttons {
-    display: flex;
 
-    gap: 8px;
-}
+        /* =========================
+           SETTINGS
+        ========================== */
 
-.chart-type {
-    flex: 1;
+        .settings {
 
-    padding: 11px;
+            display: grid;
 
-    border: 1px solid #e5e7eb;
+            grid-template-columns:
+                2fr 1fr;
 
-    border-radius: 8px;
+            gap: 14px;
 
-    background: #f9fafb;
+            margin-bottom: 20px;
+        }
 
-    color: #374151;
 
-    font-size: 14px;
+        label {
 
-    cursor: pointer;
+            display: block;
 
-    transition: 0.2s;
-}
+            font-size: 13px;
 
-.chart-type:hover {
-    border-color: #c7d2fe;
+            font-weight: 600;
 
-    background: #f5f3ff;
-}
+            color: #374151;
 
-.chart-type.active {
-    background: #6366f1;
+            margin-bottom: 7px;
+        }
 
-    color: #ffffff;
 
-    border-color: #6366f1;
-}
+        input,
+        select {
 
-/* CHART */
+            width: 100%;
 
-.chart-header {
-    margin-bottom: 18px;
-}
+            padding:
+                12px 13px;
 
-.chart-header h2 {
-    font-size: 21px;
-}
+            border:
+                1px solid #d1d5db;
 
-.chart-header p {
-    color: #64748b;
+            border-radius: 8px;
 
-    margin-top: 4px;
+            font-size: 14px;
 
-    font-size: 14px;
-}
+            background: #ffffff;
 
-.chart-container {
-    width: 100%;
+            color: #111827;
 
-    max-width: 650px;
+            outline: none;
 
-    margin: auto;
-}
+            transition: 0.2s;
+        }
 
-/* CHART ACTIONS */
 
-.chart-actions {
-    display: flex;
+        input::placeholder {
 
-    gap: 10px;
+            color: #9ca3af;
+        }
 
-    margin-top: 20px;
-}
 
-.chart-actions button {
-    flex: 1;
+        input:focus,
+        select:focus {
 
-    padding: 12px;
+            border-color:
+                #6366f1;
 
-    border: 1px solid #e5e7eb;
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    99,
+                    102,
+                    241,
+                    0.1
+                );
+        }
 
-    border-radius: 8px;
 
-    background: #f9fafb;
+        /* =========================
+           DATA ROWS
+        ========================== */
 
-    color: #374151;
+        .data-row {
 
-    font-size: 14px;
+            display: grid;
 
-    font-weight: 600;
+            grid-template-columns:
+                1fr 150px 42px;
 
-    cursor: pointer;
+            gap: 10px;
 
-    transition: 0.2s;
-}
+            margin-bottom: 10px;
+        }
 
-.chart-actions button:hover {
-    background: #f3f4f6;
-}
 
-/* AI */
+        .remove-btn {
 
-.ai-card {
-    border: 1px solid #ddd6fe;
+            border:
+                1px solid #fecaca;
 
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #faf9ff
-        );
-}
+            background: #fff5f5;
 
-.ai-card .badge {
-    margin-bottom: 8px;
-}
+            color: #dc2626;
 
-#aiResult {
-    background: #f5f3ff;
+            border-radius: 8px;
 
-    border: 1px solid #ddd6fe;
+            font-size: 18px;
 
-    border-radius: 10px;
+            cursor: pointer;
 
-    padding: 18px;
+            transition: 0.2s;
+        }
 
-    margin-top: 20px;
-}
 
-#aiResult h3 {
-    color: #4f46e5;
+        .remove-btn:hover {
 
-    font-size: 16px;
-}
+            background: #fee2e2;
+        }
 
-#aiText {
-    color: #4b5563;
 
-    margin-top: 8px;
+        /* =========================
+           BUTTONS
+        ========================== */
 
-    line-height: 1.7;
-}
+        .secondary-btn {
 
-/* ABOUT */
+            width: 100%;
 
-.about {
-    text-align: center;
-}
+            padding: 12px;
 
-.about h2 {
-    font-size: 20px;
-}
+            background: #f5f3ff;
 
-.about p {
-    color: #64748b;
+            color: #4f46e5;
 
-    max-width: 650px;
+            border:
+                1px solid #e0e7ff;
 
-    margin: 8px auto 0;
+            border-radius: 8px;
 
-    line-height: 1.7;
+            font-size: 14px;
 
-    font-size: 14px;
-}
+            font-weight: 600;
 
-/* FOOTER */
+            cursor: pointer;
 
-footer {
-    text-align: center;
+            transition: 0.2s;
+        }
 
-    padding: 30px 20px;
 
-    color: #94a3b8;
+        .secondary-btn:hover {
 
-    font-size: 12px;
-}
+            background: #eef2ff;
+        }
 
-/* MOBILE */
 
-@media (max-width: 600px) {
+        .generate-btn {
 
-    header {
-        padding: 0 16px;
-    }
+            width: 100%;
 
-    .hero {
-        padding:
-            50px 5px 40px;
-    }
+            padding: 14px;
 
-    .hero h1 {
-        font-size: 34px;
+            margin-top: 24px;
 
-        letter-spacing: -1px;
-    }
+            background: #6366f1;
 
-    .hero p {
-        font-size: 15px;
-    }
+            color: #ffffff;
 
-    .card,
-    .chart-card,
-    .about {
-        padding: 19px;
+            border: none;
 
-        border-radius: 12px;
-    }
+            border-radius: 8px;
 
-    .settings {
-        grid-template-columns: 1fr;
-    }
+            font-size: 15px;
 
-    .data-row {
-        grid-template-columns:
-            1fr 90px 42px;
-    }
+            font-weight: 700;
 
-    .chart-buttons {
-        flex-direction: column;
-    }
+            cursor: pointer;
 
-    .chart-actions {
-        flex-direction: column;
-    }
+            transition: 0.2s;
 
-}
-</style>
-    
+            box-shadow:
+                0 4px 10px
+                rgba(
+                    99,
+                    102,
+                    241,
+                    0.2
+                );
+        }
+
+
+        .generate-btn:hover {
+
+            background: #4f46e5;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =========================
+           CHART OPTIONS
+        ========================== */
+
+        .chart-options {
+
+            margin-top: 28px;
+        }
+
+
+        .chart-options h2 {
+
+            font-size: 18px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .chart-buttons {
+
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .chart-type {
+
+            flex: 1;
+
+            padding: 11px;
+
+            border:
+                1px solid #e5e7eb;
+
+            border-radius: 8px;
+
+            background: #f9fafb;
+
+            color: #374151;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .chart-type:hover {
+
+            border-color:
+                #c7d2fe;
+
+            background: #f5f3ff;
+        }
+
+
+        .chart-type.active {
+
+            background: #6366f1;
+
+            color: #ffffff;
+
+            border-color:
+                #6366f1;
+        }
+
+
+        /* =========================
+           CHART
+        ========================== */
+
+        .chart-header {
+
+            margin-bottom: 18px;
+        }
+
+
+        .chart-header h2 {
+
+            font-size: 21px;
+        }
+
+
+        .chart-header p {
+
+            color: #64748b;
+
+            margin-top: 4px;
+
+            font-size: 14px;
+        }
+
+
+        .chart-container {
+
+            width: 100%;
+
+            max-width: 650px;
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           CHART ACTIONS
+        ========================== */
+
+        .chart-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+
+        .chart-actions button {
+
+            flex: 1;
+
+            padding: 12px;
+
+            border:
+                1px solid #e5e7eb;
+
+            border-radius: 8px;
+
+            background: #f9fafb;
+
+            color: #374151;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .chart-actions button:hover {
+
+            background: #f3f4f6;
+        }
+
+
+        /* =========================
+           AI ANALYST
+        ========================== */
+
+        .ai-card {
+
+            border:
+                1px solid #ddd6fe;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #faf9ff
+                );
+        }
+
+
+        .ai-card .badge {
+
+            margin-bottom: 8px;
+        }
+
+
+        #aiResult {
+
+            background: #f5f3ff;
+
+            border:
+                1px solid #ddd6fe;
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+            margin-top: 20px;
+        }
+
+
+        #aiResult h3 {
+
+            color: #4f46e5;
+
+            font-size: 16px;
+        }
+
+
+        #aiText {
+
+            color: #4b5563;
+
+            margin-top: 8px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           NOTIFICATION
+        ========================== */
+
+        .dataviz-notification {
+
+            position: fixed;
+
+            left: 50%;
+
+            bottom: 25px;
+
+            transform:
+                translateX(-50%);
+
+            background: #111827;
+
+            color: #ffffff;
+
+            padding:
+                13px 20px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 8px 25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.15
+                );
+
+            z-index: 9999;
+
+            animation:
+                notificationIn
+                0.25s ease;
+        }
+
+
+        @keyframes notificationIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translate(
+                        -50%,
+                        10px
+                    );
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translate(
+                        -50%,
+                        0
+                    );
+            }
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about {
+
+            text-align: center;
+        }
+
+
+        .about h2 {
+
+            font-size: 20px;
+        }
+
+
+        .about p {
+
+            color: #64748b;
+
+            max-width: 650px;
+
+            margin:
+                8px auto 0;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+
+            text-align: center;
+
+            padding:
+                30px 20px;
+
+            color: #94a3b8;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            header {
+
+                padding:
+                    0 16px;
+            }
+
+
+            nav {
+
+                display: none;
+            }
+
+
+            .hero {
+
+                padding:
+                    50px 5px 40px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 34px;
+
+                letter-spacing:
+                    -1px;
+            }
+
+
+            .hero p {
+
+                font-size: 15px;
+            }
+
+
+            .card,
+            .chart-card,
+            .about {
+
+                padding: 19px;
+
+                border-radius: 12px;
+            }
+
+
+            .settings {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .data-row {
+
+                grid-template-columns:
+                    1fr 90px 42px;
+            }
+
+
+            .chart-buttons {
+
+                flex-direction:
+                    column;
+            }
+
+
+            .chart-actions {
+
+                flex-direction:
+                    column;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================
-     HTML
-========================== -->
+    <!-- =========================
+         HEADER
+    ========================== -->
 
+    <header>
 
-<header>
+        <div class="logo">
 
-    <div class="logo">
-        Data<span>Viz</span>
-    </div>
+            Data<span>Viz</span>
 
-    <button id="clearBtn">
-        Clear
-    </button>
-
-</header>
-
-
-<main>
-
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="badge">
-            📊 SIMPLE DATA VISUALIZATION
         </div>
 
-        <h1>
-            Turn your data into
-            <span>beautiful charts.</span>
-        </h1>
 
-        <p>
-            Transform numbers into clear,
-            easy-to-understand visual information.
-        </p>
+        <nav>
 
-    </section>
+            <a href="#data">
+                Create
+            </a>
+
+            <a href="#ai">
+                AI Analyst
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+        </nav>
 
 
-    <!-- DATA INPUT -->
+        <button id="clearBtn">
 
-    <section class="card">
+            Clear
 
-        <div class="section-heading">
+        </button>
 
-            <h2>
-                Your Data
-            </h2>
+    </header>
+
+
+    <main>
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="badge">
+
+                📊 SIMPLE DATA VISUALIZATION
+
+            </div>
+
+
+            <h1>
+
+                Turn your data into
+
+                <span>
+                    beautiful charts.
+                </span>
+
+            </h1>
+
 
             <p>
-                Add categories and their values.
+
+                Transform numbers into
+                clear, easy-to-understand
+                visual information.
+
             </p>
 
-        </div>
+        </section>
 
 
-        <div class="settings">
+        <!-- =========================
+             DATA INPUT
+        ========================== -->
 
-            <div>
+        <section
+            class="card"
+            id="data"
+        >
 
-                <label>
-                    Chart title
-                </label>
+            <div class="section-heading">
 
-                <input
-                    type="text"
-                    id="chartTitle"
-                    placeholder="Example: Monthly Expenses"
-                >
+                <h2>
+
+                    Your Data
+
+                </h2>
+
+
+                <p>
+
+                    Add categories
+                    and their values.
+
+                </p>
+
+            </div>
+
+
+            <div class="settings">
+
+
+                <div>
+
+                    <label>
+
+                        Chart title
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="chartTitle"
+                        placeholder="Example: Monthly Expenses"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+
+                        Unit
+
+                    </label>
+
+
+                    <select id="unit">
+
+                        <option value="">
+
+                            None
+
+                        </option>
+
+
+                        <option value="K">
+
+                            K (Kwacha)
+
+                        </option>
+
+
+                        <option value="$">
+
+                            $ (Dollar)
+
+                        </option>
+
+
+                        <option value="%">
+
+                            % (Percent)
+
+                        </option>
+
+
+                        <option value="hrs">
+
+                            Hours
+
+                        </option>
+
+                    </select>
+
+                </div>
 
             </div>
 
 
-            <div>
+            <div id="dataRows"></div>
 
-                <label>
-                    Unit
-                </label>
 
-                <select id="unit">
+            <button
+                id="addRowBtn"
+                class="secondary-btn"
+            >
 
-                    <option value="">
-                        None
-                    </option>
+                + Add Data
 
-                    <option value="K">
-                        K (Kwacha)
-                    </option>
+            </button>
 
-                    <option value="$">
-                        $ (Dollar)
-                    </option>
 
-                    <option value="%">
-                        % (Percent)
-                    </option>
+            <!-- CHART TYPE -->
 
-                    <option value="hrs">
-                        Hours
-                    </option>
+            <div class="chart-options">
 
-                </select>
+                <h2>
+
+                    Chart Type
+
+                </h2>
+
+
+                <div class="chart-buttons">
+
+
+                    <button
+                        class="chart-type active"
+                        data-type="pie"
+                    >
+
+                        🥧 Pie
+
+                    </button>
+
+
+                    <button
+                        class="chart-type"
+                        data-type="bar"
+                    >
+
+                        📊 Bar
+
+                    </button>
+
+
+                    <button
+                        class="chart-type"
+                        data-type="line"
+                    >
+
+                        📈 Line
+
+                    </button>
+
+
+                </div>
 
             </div>
 
-        </div>
+
+            <button
+                id="generateBtn"
+                class="generate-btn"
+            >
+
+                Generate Chart
+
+            </button>
+
+        </section>
 
 
-        <div id="dataRows"></div>
+        <!-- =========================
+             CHART
+        ========================== -->
+
+        <section class="chart-card">
+
+            <div class="chart-header">
+
+                <h2 id="displayTitle">
+
+                    Your Chart
+
+                </h2>
 
 
-        <button
-            id="addRowBtn"
-            class="secondary-btn">
+                <p id="totalText"></p>
 
-            + Add Data
-
-        </button>
+            </div>
 
 
-        <!-- CHART TYPE -->
+            <div class="chart-container">
 
-        <div class="chart-options">
+                <canvas id="myChart"></canvas>
+
+            </div>
+
+
+            <div class="chart-actions">
+
+
+                <button id="downloadBtn">
+
+                    📥 Download
+
+                </button>
+
+
+                <button id="shareBtn">
+
+                    📤 Share
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             AI ANALYST
+        ========================== -->
+
+        <section
+            class="card ai-card"
+            id="ai"
+        >
+
+            <div class="section-heading">
+
+
+                <div class="badge">
+
+                    🤖 AI POWERED
+
+                </div>
+
+
+                <h2>
+
+                    AI Data Analyst
+
+                </h2>
+
+
+                <p>
+
+                    Let DataViz analyze your
+                    numbers and find useful
+                    patterns.
+
+                </p>
+
+            </div>
+
+
+            <button
+                id="aiAnalyzeBtn"
+                class="generate-btn"
+            >
+
+                ✨ Analyze My Data
+
+            </button>
+
+
+            <div
+                id="aiResult"
+                style="display:none;"
+            >
+
+                <h3>
+
+                    📊 Your Data Insights
+
+                </h3>
+
+
+                <p id="aiText"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section
+            class="about"
+            id="about"
+        >
 
             <h2>
-                Chart Type
+
+                What is DataViz?
+
             </h2>
 
-            <div class="chart-buttons">
 
-                <button
-                    class="chart-type active"
-                    data-type="pie">
+            <p>
 
-                    🥧 Pie
+                DataViz helps you turn
+                numbers into visual information.
+                Use it for school, business,
+                budgeting, research,
+                presentations and more.
 
-                </button>
+            </p>
 
+        </section>
 
-                <button
-                    class="chart-type"
-                    data-type="bar">
 
-                    📊 Bar
+    </main>
 
-                </button>
 
+    <footer>
 
-                <button
-                    class="chart-type"
-                    data-type="line">
+        DataViz © 2026
 
-                    📈 Line
+    </footer>
 
-                </button>
 
-            </div>
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
-        </div>
+    <script>
 
+        let chart = null;
 
-        <button
-            id="generateBtn"
-            class="generate-btn">
+        let selectedChartType = "pie";
 
-            Generate Chart
 
-        </button>
-
-    </section>
-
-
-    <!-- CHART -->
-
-    <section class="chart-card">
-
-        <div class="chart-header">
-
-            <h2 id="displayTitle">
-                Your Chart
-            </h2>
-
-            <p id="totalText"></p>
-
-        </div>
-
-
-        <div class="chart-container">
-
-            <canvas id="myChart"></canvas>
-
-        </div>
-
-
-        <div class="chart-actions">
-
-            <button id="downloadBtn">
-                📥 Download
-            </button>
-
-            <button id="shareBtn">
-                📤 Share
-            </button>
-
-        </div>
-
-    </section>
-
-<!-- AI DATA ANALYST -->
-
-<section class="card ai-card">
-
-    <div class="section-heading">
-
-        <div class="badge">
-            🤖 AI POWERED
-        </div>
-
-        <h2>
-            AI Data Analyst
-        </h2>
-
-        <p>
-            Let DataViz analyze your numbers,
-            find patterns and explain what they mean.
-        </p>
-
-    </div>
-
-    <button
-        id="aiAnalyzeBtn"
-        class="generate-btn">
-
-        ✨ Analyze My Data
-
-    </button>
-
-    <div
-        id="aiResult"
-        style="display:none; margin-top:20px;">
-
-        <h3>
-            📊 Your Data Insights
-        </h3>
-
-        <p
-            id="aiText"
-            style="margin-top:10px; line-height:1.6;">
-        </p>
-
-    </div>
-
-</section>
-    <!-- ABOUT -->
-
-    <section class="about">
-
-        <h2>
-            What is DataViz?
-        </h2>
-
-        <p>
-            DataViz helps you turn numbers into
-            visual information. Use it for school,
-            business, budgeting, research,
-            presentations and more.
-        </p>
-
-    </section>
-
-
-</main>
-
-
-<footer>
-
-    DataViz © 2026
-
-</footer>
-
-
-
-<!-- =========================
-     JAVASCRIPT
-========================== -->
-
-
-<script>
-
-let chart = null;
-
-let selectedChartType = "pie";
-
-
-const dataRows =
-    document.getElementById("dataRows");
-
-const addRowBtn =
-    document.getElementById("addRowBtn");
-
-const generateBtn =
-    document.getElementById("generateBtn");
-
-const clearBtn =
-    document.getElementById("clearBtn");
-
-const downloadBtn =
-    document.getElementById("downloadBtn");
-
-const shareBtn =
-    document.getElementById("shareBtn");
-
-const chartTitle =
-    document.getElementById("chartTitle");
-
-const unit =
-    document.getElementById("unit");
-
-const displayTitle =
-    document.getElementById("displayTitle");
-
-const totalText =
-    document.getElementById("totalText");
-
-
-
-/* ADD DATA ROW */
-
-function addRow(category = "", value = "") {
-
-    const row =
-        document.createElement("div");
-
-    row.className = "data-row";
-
-
-    row.innerHTML = `
-
-        <input
-            type="text"
-            class="category"
-            placeholder="Category"
-            value="${category}"
-        >
-
-        <input
-            type="number"
-            class="value"
-            placeholder="Value"
-            min="0"
-            value="${value}"
-        >
-
-        <button
-            class="remove-btn">
-
-            ×
-
-        </button>
-
-    `;
-
-
-    row.querySelector(".remove-btn")
-        .addEventListener(
-            "click",
-            function () {
-
-                row.remove();
-
-            }
-        );
-
-
-    dataRows.appendChild(row);
-
-}
-
-
-
-/* INITIAL ROWS */
-
-addRow();
-addRow();
-addRow();
-
-
-
-/* ADD ROW */
-
-addRowBtn.addEventListener(
-    "click",
-    function () {
-
-        addRow();
-
-    }
-);
-
-
-
-/* CHART TYPE */
-
-document
-    .querySelectorAll(".chart-type")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                document
-                    .querySelectorAll(
-                        ".chart-type"
-                    )
-                    .forEach(btn => {
-
-                        btn.classList.remove(
-                            "active"
-                        );
-
-                    });
-
-
-                this.classList.add("active");
-
-
-                selectedChartType =
-                    this.dataset.type;
-
-            }
-        );
-
-    });
-
-
-
-/* GENERATE */
-
-generateBtn.addEventListener(
-    "click",
-    function () {
-
-        const categories = [];
-
-        const values = [];
-
-
-        const rows =
-            document.querySelectorAll(
-                ".data-row"
+        const dataRows =
+            document.getElementById(
+                "dataRows"
             );
 
 
-        rows.forEach(row => {
-
-            const category =
-                row.querySelector(
-                    ".category"
-                ).value.trim();
+        const addRowBtn =
+            document.getElementById(
+                "addRowBtn"
+            );
 
 
-            const value =
-                Number(
-                    row.querySelector(
-                        ".value"
-                    ).value
+        const generateBtn =
+            document.getElementById(
+                "generateBtn"
+            );
+
+
+        const clearBtn =
+            document.getElementById(
+                "clearBtn"
+            );
+
+
+        const downloadBtn =
+            document.getElementById(
+                "downloadBtn"
+            );
+
+
+        const shareBtn =
+            document.getElementById(
+                "shareBtn"
+            );
+
+
+        const chartTitle =
+            document.getElementById(
+                "chartTitle"
+            );
+
+
+        const unit =
+            document.getElementById(
+                "unit"
+            );
+
+
+        const displayTitle =
+            document.getElementById(
+                "displayTitle"
+            );
+
+
+        const totalText =
+            document.getElementById(
+                "totalText"
+            );
+
+
+        /* =========================
+           NOTIFICATION
+        ========================== */
+
+        function showNotification(
+            message
+        ) {
+
+            const oldNotification =
+                document.querySelector(
+                    ".dataviz-notification"
                 );
 
 
-            if (
-                category !== "" &&
-                !isNaN(value)
-            ) {
+            if (oldNotification) {
 
-                categories.push(
-                    category
-                );
-
-                values.push(
-                    value
-                );
+                oldNotification.remove();
 
             }
 
-        });
+
+            const notification =
+                document.createElement(
+                    "div"
+                );
 
 
-        if (categories.length < 2) {
+            notification.className =
+                "dataviz-notification";
 
-    showNotification(
-        "Please enter at least two pieces of data."
-    );
 
-    return;
+            notification.textContent =
+                message;
+
+
+            document.body.appendChild(
+                notification
+            );
+
+
+            setTimeout(
+                function () {
+
+                    if (
+                        notification
+                        .parentNode
+                    ) {
+
+                        notification.remove();
+
+                    }
+
+                },
+                2500
+            );
 
         }
 
 
-        createChart(
+        /* =========================
+           ADD DATA ROW
+        ========================== */
+
+        function addRow(
+            category = "",
+            value = ""
+        ) {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "data-row";
+
+
+            row.innerHTML = `
+
+                <input
+                    type="text"
+                    class="category"
+                    placeholder="Category"
+                >
+
+                <input
+                    type="number"
+                    class="value"
+                    placeholder="Value"
+                    min="0"
+                >
+
+                <button
+                    class="remove-btn"
+                    type="button"
+                >
+
+                    ×
+
+                </button>
+
+            `;
+
+
+            row.querySelector(
+                ".category"
+            ).value = category;
+
+
+            row.querySelector(
+                ".value"
+            ).value = value;
+
+
+            row.querySelector(
+                ".remove-btn"
+            ).addEventListener(
+                "click",
+                function () {
+
+                    row.remove();
+
+                }
+            );
+
+
+            dataRows.appendChild(
+                row
+            );
+
+        }
+
+
+        /* =========================
+           INITIAL ROWS
+        ========================== */
+
+        addRow();
+
+        addRow();
+
+        addRow();
+
+
+        /* =========================
+           ADD ROW
+        ========================== */
+
+        addRowBtn.addEventListener(
+            "click",
+            function () {
+
+                addRow();
+
+            }
+        );
+
+
+        /* =========================
+           CHART TYPE
+        ========================== */
+
+        document
+            .querySelectorAll(
+                ".chart-type"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            document
+                                .querySelectorAll(
+                                    ".chart-type"
+                                )
+                                .forEach(
+                                    function (btn) {
+
+                                        btn.classList
+                                            .remove(
+                                                "active"
+                                            );
+
+                                    }
+                                );
+
+
+                            this.classList
+                                .add("active");
+
+
+                            selectedChartType =
+                                this.dataset.type;
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =========================
+           GENERATE CHART
+        ========================== */
+
+        generateBtn.addEventListener(
+            "click",
+            function () {
+
+                const categories = [];
+
+                const values = [];
+
+
+                const rows =
+                    document.querySelectorAll(
+                        ".data-row"
+                    );
+
+
+                rows.forEach(
+                    function (row) {
+
+                        const category =
+                            row.querySelector(
+                                ".category"
+                            ).value.trim();
+
+
+                        const value =
+                            Number(
+                                row.querySelector(
+                                    ".value"
+                                ).value
+                            );
+
+
+                        if (
+                            category !== "" &&
+                            !isNaN(value)
+                        ) {
+
+                            categories.push(
+                                category
+                            );
+
+                            values.push(
+                                value
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                if (
+                    categories.length < 2
+                ) {
+
+                    showNotification(
+                        "Please enter at least two pieces of data."
+                    );
+
+                    return;
+
+                }
+
+
+                createChart(
+                    categories,
+                    values
+                );
+
+            }
+        );
+
+
+        /* =========================
+           CREATE CHART
+        ========================== */
+
+        function createChart(
             categories,
             values
-        );
+        ) {
 
-    }
-);
-
-
-
-/* CREATE CHART */
-
-function createChart(
-    categories,
-    values
-) {
-
-    const canvas =
-        document.getElementById(
-            "myChart"
-        );
+            const canvas =
+                document.getElementById(
+                    "myChart"
+                );
 
 
-    if (chart !== null) {
+            if (chart !== null) {
 
-        chart.destroy();
+                chart.destroy();
 
-    }
-
-
-    const selectedUnit =
-        unit.value;
+            }
 
 
-    const title =
-        chartTitle.value.trim()
-        || "Your Data";
+            const selectedUnit =
+                unit.value;
 
 
-    displayTitle.textContent =
-        title;
+            const title =
+                chartTitle.value.trim()
+                || "Your Data";
 
 
-    const total =
-        values.reduce(
-            (sum, value) =>
-                sum + value,
-            0
-        );
+            displayTitle.textContent =
+                title;
 
 
-    totalText.textContent =
-        `Total: ${selectedUnit} ${total}`;
+            const total =
+                values.reduce(
+                    function (
+                        sum,
+                        value
+                    ) {
 
-
-    chart =
-        new Chart(
-            canvas,
-            {
-
-                type:
-                    selectedChartType,
-
-                data:
-                    {
-
-                        labels:
-                            categories,
-
-                        datasets:
-                            [
-
-                                {
-
-                                    label:
-                                        title,
-
-                                    data:
-                                        values,
-
-                                    borderWidth:
-                                        2,
-
-                                    backgroundColor:
-                                        [
-
-                                            "#6366f1",
-                                            "#ec4899",
-                                            "#14b8a6",
-                                            "#f59e0b",
-                                            "#ef4444",
-                                            "#8b5cf6",
-                                            "#06b6d4",
-                                            "#84cc16"
-
-                                        ],
-
-                                    borderColor:
-                                        "#ffffff"
-
-                                }
-
-                            ]
+                        return sum + value;
 
                     },
+                    0
+                );
 
 
-                options:
+            totalText.textContent =
+                selectedUnit
+                ? `Total: ${selectedUnit} ${total}`
+                : `Total: ${total}`;
+
+
+            chart =
+                new Chart(
+                    canvas,
                     {
 
-                        responsive:
-                            true,
+                        type:
+                            selectedChartType,
 
-                        plugins:
+
+                        data:
                             {
 
-                                legend:
+                                labels:
+                                    categories,
+
+
+                                datasets:
+                                    [
+
+                                        {
+
+                                            label:
+                                                title,
+
+
+                                            data:
+                                                values,
+
+
+                                            borderWidth:
+                                                2,
+
+
+                                            backgroundColor:
+                                                [
+
+                                                    "#6366f1",
+                                                    "#ec4899",
+                                                    "#14b8a6",
+                                                    "#f59e0b",
+                                                    "#ef4444",
+                                                    "#8b5cf6",
+                                                    "#06b6d4",
+                                                    "#84cc16"
+
+                                                ],
+
+
+                                            borderColor:
+                                                "#ffffff"
+
+                                        }
+
+                                    ]
+
+                            },
+
+
+                        options:
+                            {
+
+                                responsive:
+                                    true,
+
+
+                                plugins:
                                     {
 
-                                        position:
-                                            "bottom"
-
-                                    },
-
-                                tooltip:
-                                    {
-
-                                        callbacks:
+                                        legend:
                                             {
 
-                                                label:
-                                                    function(
-                                                        context
-                                                    ) {
+                                                position:
+                                                    "bottom"
 
-                                                        return (
-                                                            `${context.label}: ${selectedUnit} ${context.raw}`
-                                                        );
+                                            },
+
+
+                                        tooltip:
+                                            {
+
+                                                callbacks:
+                                                    {
+
+                                                        label:
+                                                            function (
+                                                                context
+                                                            ) {
+
+                                                                return selectedUnit
+                                                                    ? `${context.label}: ${selectedUnit} ${context.raw}`
+                                                                    : `${context.label}: ${context.raw}`;
+
+                                                            }
 
                                                     }
 
@@ -1236,391 +1833,548 @@ function createChart(
                             }
 
                     }
+                );
+
+        }
+
+
+        /* =========================
+           DOWNLOAD
+        ========================== */
+
+        downloadBtn.addEventListener(
+            "click",
+            function () {
+
+                if (chart === null) {
+
+                    showNotification(
+                        "Please generate a chart first."
+                    );
+
+                    return;
+
+                }
+
+
+                const link =
+                    document.createElement(
+                        "a"
+                    );
+
+
+                link.download =
+                    "dataviz-chart.png";
+
+
+                link.href =
+                    document
+                        .getElementById(
+                            "myChart"
+                        )
+                        .toDataURL(
+                            "image/png"
+                        );
+
+
+                link.click();
 
             }
-
         );
 
-}
+
+        /* =========================
+           SHARE
+        ========================== */
+
+        shareBtn.addEventListener(
+            "click",
+            async function () {
+
+                if (!chart) {
+
+                    showNotification(
+                        "Please generate a chart first."
+                    );
+
+                    return;
+
+                }
 
 
+                try {
 
-/* DOWNLOAD */
-function showNotification(message) {
-
-    const notification =
-        document.createElement("div");
-
-    notification.textContent =
-        message;
-
-    notification.style.position =
-        "fixed";
-
-    notification.style.bottom =
-        "25px";
-
-    notification.style.left =
-        "50%";
-
-    notification.style.transform =
-        "translateX(-50%)";
-
-    notification.style.background =
-        "#111827";
-
-    notification.style.color =
-        "white";
-
-    notification.style.padding =
-        "13px 20px";
-
-    notification.style.borderRadius =
-        "10px";
-
-    notification.style.fontSize =
-        "14px";
-
-    notification.style.fontWeight =
-        "600";
-
-    notification.style.boxShadow =
-        "0 8px 25px rgba(0,0,0,0.15)";
-
-    notification.style.zIndex =
-        "9999";
-
-    document.body.appendChild(
-        notification
-    );
-
-    setTimeout(
-        () => {
-
-            notification.remove();
-
-        },
-        2500
-    );
-
-    }
-downloadBtn.addEventListener(
-    "click",
-    function () {
-
-        if (chart === null) {
-
-    showNotification(
-        "Please generate a chart first."
-    );
-
-    return;
-
-    }
+                    const canvas =
+                        document.getElementById(
+                            "myChart"
+                        );
 
 
-        const link =
-            document.createElement(
-                "a"
-            );
+                    const blob =
+                        await new Promise(
+                            function (
+                                resolve
+                            ) {
+
+                                canvas.toBlob(
+                                    resolve
+                                );
+
+                            }
+                        );
 
 
-        link.download =
-            "dataviz-chart.png";
+                    const file =
+                        new File(
+                            [blob],
+
+                            "dataviz-chart.png",
+
+                            {
+                                type:
+                                    "image/png"
+                            }
+                        );
 
 
-        link.href =
-            document
-                .getElementById(
-                    "myChart"
-                )
-                .toDataURL(
-                    "image/png"
-                );
-
-
-        link.click();
-
-    }
-);
-
-
-
-/* SHARE */
-
-shareBtn.addEventListener(
-    "click",
-    async function () {
-
-        if (!chart) {
-
-    showNotification(
-        "Please generate a chart first."
-    );
-
-    return;
-
-            }
-
-
-        try {
-
-            const canvas =
-                document.getElementById(
-                    "myChart"
-                );
-
-
-            const blob =
-                await new Promise(
-                    resolve =>
-                        canvas.toBlob(
-                            resolve
+                    if (
+                        navigator.share &&
+                        navigator.canShare &&
+                        navigator.canShare(
+                            {
+                                files:
+                                    [file]
+                            }
                         )
+                    ) {
+
+                        await navigator.share(
+                            {
+
+                                title:
+                                    "My DataViz Chart",
+
+
+                                text:
+                                    "Created with DataViz",
+
+
+                                files:
+                                    [file]
+
+                            }
+                        );
+
+                    }
+
+                    else {
+
+                        showNotification(
+                            "Sharing isn't supported here. Use Download instead."
+                        );
+
+                    }
+
+                }
+
+                catch (error) {
+
+                    console.log(error);
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           AI DATA ANALYST
+        ========================== */
+
+        const aiAnalyzeBtn =
+            document.getElementById(
+                "aiAnalyzeBtn"
+            );
+
+
+        const aiResult =
+            document.getElementById(
+                "aiResult"
+            );
+
+
+        const aiText =
+            document.getElementById(
+                "aiText"
+            );
+
+
+        aiAnalyzeBtn.addEventListener(
+            "click",
+            function () {
+
+                const rows =
+                    document.querySelectorAll(
+                        ".data-row"
+                    );
+
+
+                const data = [];
+
+
+                rows.forEach(
+                    function (row) {
+
+                        const category =
+                            row.querySelector(
+                                ".category"
+                            ).value.trim();
+
+
+                        const value =
+                            Number(
+                                row.querySelector(
+                                    ".value"
+                                ).value
+                            );
+
+
+                        if (
+                            category !== "" &&
+                            !isNaN(value)
+                        ) {
+
+                            data.push(
+                                {
+                                    category:
+                                        category,
+
+                                    value:
+                                        value
+                                }
+                            );
+
+                        }
+
+                    }
                 );
 
 
-            const file =
-                new File(
-                    [
-                        blob
-                    ],
+                if (data.length < 2) {
 
-                    "dataviz-chart.png",
+                    showNotification(
+                        "Add at least two pieces of data first."
+                    );
 
+                    return;
+
+                }
+
+
+                const values =
+                    data.map(
+                        function (item) {
+
+                            return item.value;
+
+                        }
+                    );
+
+
+                /* TOTAL */
+
+                const total =
+                    values.reduce(
+                        function (
+                            sum,
+                            value
+                        ) {
+
+                            return sum + value;
+
+                        },
+                        0
+                    );
+
+
+                /* AVERAGE */
+
+                const average =
+                    total /
+                    values.length;
+
+
+                /* HIGHEST */
+
+                const highest =
+                    data.reduce(
+                        function (
+                            a,
+                            b
+                        ) {
+
+                            return a.value >
+                                b.value
+                                ? a
+                                : b;
+
+                        }
+                    );
+
+
+                /* LOWEST */
+
+                const lowest =
+                    data.reduce(
+                        function (
+                            a,
+                            b
+                        ) {
+
+                            return a.value <
+                                b.value
+                                ? a
+                                : b;
+
+                        }
+                    );
+
+
+                /* RANGE */
+
+                const range =
+                    highest.value -
+                    lowest.value;
+
+
+                /* TREND */
+
+                const firstValue =
+                    values[0];
+
+
+                const lastValue =
+                    values[
+                        values.length - 1
+                    ];
+
+
+                let trend;
+
+                let trendIcon;
+
+
+                if (
+                    lastValue >
+                    firstValue
+                ) {
+
+                    trendIcon = "📈";
+
+                    trend =
+                        "Your data shows an overall increase from the beginning to the end.";
+
+                }
+
+                else if (
+                    lastValue <
+                    firstValue
+                ) {
+
+                    trendIcon = "📉";
+
+                    trend =
+                        "Your data shows an overall decrease from the beginning to the end.";
+
+                }
+
+                else {
+
+                    trendIcon = "➡️";
+
+                    trend =
+                        "Your data starts and ends at the same value.";
+
+                }
+
+
+                /* DISPLAY RESULTS */
+
+                aiText.innerHTML = `
+
+                    <div style="
+                        display:grid;
+                        gap:14px;
+                    ">
+
+                        <div>
+
+                            <strong>
+                                Total
+                            </strong>
+
+                            <br>
+
+                            ${total}
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Average
+                            </strong>
+
+                            <br>
+
+                            ${average.toFixed(2)}
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Highest
+                            </strong>
+
+                            <br>
+
+                            ${highest.category}
+                            —
+                            ${highest.value}
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Lowest
+                            </strong>
+
+                            <br>
+
+                            ${lowest.category}
+                            —
+                            ${lowest.value}
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Range
+                            </strong>
+
+                            <br>
+
+                            ${range}
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+
+                                ${trendIcon}
+                                Trend
+
+                            </strong>
+
+                            <br>
+
+                            ${trend}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                aiResult.style.display =
+                    "block";
+
+
+                aiResult.scrollIntoView(
                     {
-                        type:
-                            "image/png"
-                    }
+                        behavior:
+                            "smooth",
 
-                );
-
-
-            if (
-                navigator.share &&
-                navigator.canShare &&
-                navigator.canShare(
-                    {
-                        files:
-                            [file]
-                    }
-                )
-            ) {
-
-                await navigator.share(
-                    {
-
-                        title:
-                            "My DataViz Chart",
-
-                        text:
-                            "Created with DataViz",
-
-                        files:
-                            [file]
-
+                        block:
+                            "nearest"
                     }
                 );
 
             }
+        );
 
-            else {
 
-                alert(
-                    "Sharing isn't supported here. Use Download instead."
+        /* =========================
+           CLEAR
+        ========================== */
+
+        clearBtn.addEventListener(
+            "click",
+            function () {
+
+                dataRows.innerHTML =
+                    "";
+
+
+                addRow();
+
+                addRow();
+
+                addRow();
+
+
+                chartTitle.value =
+                    "";
+
+
+                unit.value =
+                    "";
+
+
+                displayTitle.textContent =
+                    "Your Chart";
+
+
+                totalText.textContent =
+                    "";
+
+
+                aiResult.style.display =
+                    "none";
+
+
+                aiText.innerHTML =
+                    "";
+
+
+                if (chart !== null) {
+
+                    chart.destroy();
+
+                    chart = null;
+
+                }
+
+
+                showNotification(
+                    "Data cleared."
                 );
 
             }
+        );
 
-        }
-
-        catch (error) {
-
-            console.log(error);
-
-        }
-
-    }
-);
-
-/* AI DATA ANALYST */
-
-const aiAnalyzeBtn =
-    document.getElementById("aiAnalyzeBtn");
-
-const aiResult =
-    document.getElementById("aiResult");
-
-const aiText =
-    document.getElementById("aiText");
-
-
-aiAnalyzeBtn.addEventListener(
-    "click",
-    function () {
-
-        const rows =
-            document.querySelectorAll(
-                ".data-row"
-            );
-
-        const data = [];
-
-        rows.forEach(row => {
-
-            const category =
-                row.querySelector(
-                    ".category"
-                ).value.trim();
-
-            const value =
-                Number(
-                    row.querySelector(
-                        ".value"
-                    ).value
-                );
-
-            if (
-                category !== "" &&
-                !isNaN(value)
-            ) {
-
-                data.push({
-                    category,
-                    value
-                });
-
-            }
-
-        });
-
-
-        if (data.length < 2) {
-
-    showNotification(
-        "Add at least two pieces of data first."
-    );
-
-    return;
-
-        }
-
-            return;
-
-        }
-
-
-        const values =
-            data.map(
-                item => item.value
-            );
-
-
-        const total =
-            values.reduce(
-                (sum, value) =>
-                    sum + value,
-                0
-            );
-const average =
-    total / values.length;
-
-        const highest =
-            data.reduce(
-                (a, b) =>
-                    a.value > b.value
-                        ? a
-                        : b
-            );
-
-
-        const lowest =
-            data.reduce(
-                (a, b) =>
-                    a.value < b.value
-                        ? a
-                        : b
-            );
-
-
-        aiText.innerHTML = `
-
-            Your total is
-            <strong>${total}</strong>.
-
-            <br><br>
-        Average:
-        <strong>${average.toFixed(2)}</strong>.
-            <br>br>
-            Your highest value is
-            <strong>
-                ${highest.category}
-            </strong>
-            with
-            <strong>
-                ${highest.value}
-            </strong>.
-
-            <br><br>
-
-            Your lowest value is
-            <strong>
-                ${lowest.category}
-            </strong>
-            with
-            <strong>
-                ${lowest.value}
-            </strong>.
-
-        `;
-
-
-        aiResult.style.display = "block";
-
-    }
-);
-
-/* CLEAR */
-
-clearBtn.addEventListener(
-    "click",
-    function () {
-
-        dataRows.innerHTML = "";
-
-
-        addRow();
-        addRow();
-        addRow();
-
-
-        chartTitle.value = "";
-
-        unit.value = "";
-
-
-        displayTitle.textContent =
-            "Your Chart";
-
-
-        totalText.textContent =
-            "";
-
-
-        if (chart !== null) {
-
-            chart.destroy();
-
-            chart = null;
-
-        }
-
-    }
-);
-
-</script>
-
+    </script>
 
 </body>
 
-  </html>
+    </html>
