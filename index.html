@@ -1079,11 +1079,11 @@ generateBtn.addEventListener(
 
         if (categories.length < 2) {
 
-            alert(
-                "Please enter at least two pieces of data."
-            );
+    showNotification(
+        "Please enter at least two pieces of data."
+    );
 
-            return;
+    return;
 
         }
 
@@ -1354,13 +1354,13 @@ shareBtn.addEventListener(
 
         if (!chart) {
 
-            alert(
-                "Generate a chart first."
-            );
+    showNotification(
+        "Please generate a chart first."
+    );
 
-            return;
+    return;
 
-        }
+            }
 
 
         try {
