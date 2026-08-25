@@ -1246,20 +1246,77 @@ function createChart(
 
 
 /* DOWNLOAD */
+function showNotification(message) {
 
+    const notification =
+        document.createElement("div");
+
+    notification.textContent =
+        message;
+
+    notification.style.position =
+        "fixed";
+
+    notification.style.bottom =
+        "25px";
+
+    notification.style.left =
+        "50%";
+
+    notification.style.transform =
+        "translateX(-50%)";
+
+    notification.style.background =
+        "#111827";
+
+    notification.style.color =
+        "white";
+
+    notification.style.padding =
+        "13px 20px";
+
+    notification.style.borderRadius =
+        "10px";
+
+    notification.style.fontSize =
+        "14px";
+
+    notification.style.fontWeight =
+        "600";
+
+    notification.style.boxShadow =
+        "0 8px 25px rgba(0,0,0,0.15)";
+
+    notification.style.zIndex =
+        "9999";
+
+    document.body.appendChild(
+        notification
+    );
+
+    setTimeout(
+        () => {
+
+            notification.remove();
+
+        },
+        2500
+    );
+
+    }
 downloadBtn.addEventListener(
     "click",
     function () {
 
         if (chart === null) {
 
-            alert(
-                "Generate a chart first."
-            );
+    showNotification(
+        "Please generate a chart first."
+    );
 
-            return;
+    return;
 
-        }
+    }
 
 
         const link =
