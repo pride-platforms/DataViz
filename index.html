@@ -1522,7 +1522,8 @@ aiAnalyzeBtn.addEventListener(
                     sum + value,
                 0
             );
-
+const average =
+    total / values.length;
 
         const highest =
             data.reduce(
@@ -1548,7 +1549,9 @@ aiAnalyzeBtn.addEventListener(
             <strong>${total}</strong>.
 
             <br><br>
-
+        Average:
+        <strong>${average.toFixed(2)}</strong>.
+            <br>br>
             Your highest value is
             <strong>
                 ${highest.category}
