@@ -1010,10 +1010,7 @@
 
         </div>
 
-
-        <nav>
-
-            <div class="menu-container">
+<div class="menu-container">
 
     <button
         id="menuBtn"
@@ -1021,19 +1018,7 @@
         type="button"
         aria-label="Open menu"
     >
-        ⋮
-    </button>
-
-    <div
-    <div class="menu-container">
-
-    <button
-        id="menuBtn"
-        class="menu-btn"
-        type="button"
-        aria-label="Open menu"
-    >
-        ⋮
+        ☰
     </button>
 
     <div
@@ -1055,7 +1040,7 @@
 
     </div>
 
-    </div>
+</div>
 
 
         <button id="clearBtn">
@@ -2483,6 +2468,42 @@
 
             }
         );
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const menuDropdown =
+    document.getElementById("menuDropdown");
+
+
+menuBtn.addEventListener(
+    "click",
+    function (event) {
+
+        event.stopPropagation();
+
+        menuDropdown.classList.toggle(
+            "show"
+        );
+
+    }
+);
+
+
+document.addEventListener(
+    "click",
+    function () {
+
+        menuDropdown.classList.remove(
+            "show"
+        );
+
+    }
+);
+     
+/* =========================
+   THREE DOTS MENU
+========================= */
+
 const menuBtn =
     document.getElementById("menuBtn");
 
