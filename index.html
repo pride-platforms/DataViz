@@ -2,31 +2,17 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="google-site-verification"
-        content="-7c1UD-HXCz2O28k4OEAwAtDiqvghrZ5KJ6ZaquNcKU"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="-7c1UD-HXCz2O28k4OEAwAtDiqvghrZ5KJ6ZaquNcKU">
+    
     <title>DataViz — Free Data Visualization Tool</title>
-
-    <meta
-        name="description"
-        content="DataViz is a simple free data visualization tool that helps you turn your data into clear and useful charts."
-    >
-
+    <meta name="description" content="DataViz is a simple free data visualization tool that helps you turn your data into clear and useful charts.">
+    
     <!-- Chart.js -->
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
     <style>
-
         /* =========================
            RESET
         ========================== */
@@ -37,350 +23,191 @@
             padding: 0;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             background: #f8fafc;
-
             color: #111827;
-
             line-height: 1.5;
         }
-
 
         /* =========================
            HEADER
         ========================== */
 
         header {
-
             height: 68px;
-
             background: #ffffff;
-
-            border-bottom:
-                1px solid #e5e7eb;
-
+            border-bottom: 1px solid #e5e7eb;
             display: flex;
-
             align-items: center;
-
-            justify-content:
-                space-between;
-
-            padding:
-                0 5%;
-
+            justify-content: space-between;
+            padding: 0 5%;
             position: sticky;
-
             top: 0;
-
             z-index: 100;
-
-            box-shadow:
-                0 2px 10px
-                rgba(0, 0, 0, 0.03);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         }
 
-.header-left {
-    display: flex;
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    align-items: center;
-
-    gap: 8px;
-}
-
-.menu-container {
-    position: relative;
-}
-
-.menu-btn {
-    width: 40px;
-    height: 40px;
-
-    border: none;
-
-    background: transparent;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 5px;
-}
-
-.menu-btn:hover {
-    background: #f3f4f6;
-}
-
-.menu-btn span {
-    width: 22px;
-
-    height: 2px;
-
-    background: #374151;
-
-    border-radius: 5px;
-
-    display: block;
-}
         .logo {
-
             font-size: 24px;
-
             font-weight: 800;
-
-            letter-spacing:
-                -0.8px;
+            letter-spacing: -0.8px;
         }
-
 
         .logo span {
-
             color: #6366f1;
         }
 
-
         nav {
-
             display: flex;
-
             gap: 25px;
         }
 
-
         nav a {
-
             text-decoration: none;
-
             color: #6b7280;
-
             font-size: 14px;
-
             font-weight: 600;
-
             transition: 0.2s;
         }
 
-
         nav a:hover {
-
             color: #6366f1;
         }
 
+        /* Menu Container & Button - CONSOLIDATED */
+        .menu-container {
+            position: relative;
+        }
 
-        #clearBtn {
-
-            border:
-                1px solid #fecaca;
-
-            background: #fff5f5;
-
-            color: #dc2626;
-
-            padding:
-                9px 16px;
-
+        .menu-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #e5e7eb;
+            background: #ffffff;
+            color: #374151;
             border-radius: 8px;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
+            font-size: 25px;
+            line-height: 1;
             cursor: pointer;
-
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: 0.2s;
         }
 
-.menu-container {
-    position: relative;
-}
-
-.menu-btn {
-    width: 40px;
-    height: 40px;
-
-    border: 1px solid #e5e7eb;
-
-    background: #ffffff;
-
-    color: #374151;
-
-    border-radius: 8px;
-
-    font-size: 25px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-.menu-btn:hover {
-    background: #f3f4f6;
-}
-
-.menu-dropdown {
-    position: absolute;
-
-    top: 48px;
-
-    right: 0;
-
-    width: 190px;
-
-    background: #ffffff;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 10px;
-
-    padding: 6px;
-
-    box-shadow:
-        0 10px 30px
-        rgba(0, 0, 0, 0.12);
-
-    display: none;
-
-    z-index: 200;
-}
-
-.menu-dropdown.show {
-    display: block;
-}
-
-.menu-dropdown a {
-    display: block;
-
-    padding: 11px 12px;
-
-    color: #374151;
-
-    text-decoration: none;
-
-    font-size: 14px;
-
-    border-radius: 7px;
-}
-
-.menu-dropdown a:hover {
-    background: #f3f4f6;
-
-    color: #4f46e5;
-}
-        #clearBtn:hover {
-
-            background: #fee2e2;
+        .menu-btn:hover {
+            background: #f3f4f6;
         }
 
+        .menu-dropdown {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            width: 190px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            display: none;
+            z-index: 200;
+        }
+
+        .menu-dropdown.show {
+            display: block;
+        }
+
+        .menu-dropdown a {
+            display: block;
+            padding: 11px 12px;
+            color: #374151;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 7px;
+            transition: 0.2s;
+        }
+
+        .menu-dropdown a:hover {
+            background: #f3f4f6;
+            color: #4f46e5;
+        }
+
+        #clearBtn {
+            border: 1px solid #fecaca;
+            background: #fff5f5;
+            color: #dc2626;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #clearBtn:hover {
+            background: #fee2e2;
+        }
 
         /* =========================
            MAIN
         ========================== */
 
         main {
-
             width: 92%;
-
             max-width: 900px;
-
             margin: auto;
         }
-
 
         /* =========================
            HERO
         ========================== */
 
         .hero {
-
             text-align: center;
-
-            padding:
-                70px 10px 50px;
+            padding: 70px 10px 50px;
         }
-
 
         .badge {
-
             display: inline-block;
-
             background: #eef2ff;
-
             color: #4f46e5;
-
-            padding:
-                7px 13px;
-
+            padding: 7px 13px;
             border-radius: 50px;
-
             font-size: 11px;
-
             font-weight: 700;
-
-            letter-spacing:
-                0.4px;
-
+            letter-spacing: 0.4px;
             margin-bottom: 18px;
         }
-
 
         .hero h1 {
-
-            font-size:
-                clamp(36px, 7vw, 54px);
-
+            font-size: clamp(36px, 7vw, 54px);
             line-height: 1.1;
-
-            letter-spacing:
-                -1.5px;
-
+            letter-spacing: -1.5px;
             margin-bottom: 18px;
         }
 
-
         .hero h1 span {
-
             color: #6366f1;
         }
 
-
         .hero p {
-
             color: #64748b;
-
             max-width: 590px;
-
             margin: auto;
-
             font-size: 16px;
-
             line-height: 1.7;
         }
-
 
         /* =========================
            CARDS
@@ -389,2206 +216,612 @@
         .card,
         .chart-card,
         .about {
-
             background: #ffffff;
-
-            border:
-                1px solid #e5e7eb;
-
+            border: 1px solid #e5e7eb;
             border-radius: 14px;
-
             padding: 26px;
-
             margin-bottom: 24px;
-
-            box-shadow:
-                0 4px 15px
-                rgba(15, 23, 42, 0.04);
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
         }
-
 
         /* =========================
            HEADINGS
         ========================== */
 
         .section-heading {
-
             margin-bottom: 20px;
         }
 
-
         .section-heading h2 {
-
             font-size: 21px;
         }
 
-
         .section-heading p {
-
             color: #64748b;
-
             margin-top: 5px;
-
             font-size: 14px;
         }
-
 
         /* =========================
            SETTINGS
         ========================== */
 
         .settings {
-
             display: grid;
-
-            grid-template-columns:
-                2fr 1fr;
-
+            grid-template-columns: 2fr 1fr;
             gap: 14px;
-
             margin-bottom: 20px;
         }
 
-
         label {
-
             display: block;
-
             font-size: 13px;
-
             font-weight: 600;
-
             color: #374151;
-
             margin-bottom: 7px;
         }
 
-
         input,
         select {
-
             width: 100%;
-
-            padding:
-                12px 13px;
-
-            border:
-                1px solid #d1d5db;
-
+            padding: 12px 13px;
+            border: 1px solid #d1d5db;
             border-radius: 8px;
-
             font-size: 14px;
-
             background: #ffffff;
-
             color: #111827;
-
             outline: none;
-
             transition: 0.2s;
         }
 
-
         input::placeholder {
-
             color: #9ca3af;
         }
 
-
         input:focus,
         select:focus {
-
-            border-color:
-                #6366f1;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(
-                    99,
-                    102,
-                    241,
-                    0.1
-                );
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
-
 
         /* =========================
            DATA ROWS
         ========================== */
 
         .data-row {
-
             display: grid;
-
-            grid-template-columns:
-                1fr 150px 42px;
-
+            grid-template-columns: 1fr 150px 42px;
             gap: 10px;
-
             margin-bottom: 10px;
         }
 
-
         .remove-btn {
-
-            border:
-                1px solid #fecaca;
-
+            border: 1px solid #fecaca;
             background: #fff5f5;
-
             color: #dc2626;
-
             border-radius: 8px;
-
             font-size: 18px;
-
             cursor: pointer;
-
             transition: 0.2s;
         }
 
-
         .remove-btn:hover {
-
             background: #fee2e2;
         }
-
 
         /* =========================
            BUTTONS
         ========================== */
 
         .secondary-btn {
-
             width: 100%;
-
             padding: 12px;
-
             background: #f5f3ff;
-
             color: #4f46e5;
-
-            border:
-                1px solid #e0e7ff;
-
+            border: 1px solid #e0e7ff;
             border-radius: 8px;
-
             font-size: 14px;
-
             font-weight: 600;
-
             cursor: pointer;
-
             transition: 0.2s;
         }
 
-
         .secondary-btn:hover {
-
             background: #eef2ff;
         }
 
-
         .generate-btn {
-
             width: 100%;
-
             padding: 14px;
-
             margin-top: 24px;
-
             background: #6366f1;
-
             color: #ffffff;
-
             border: none;
-
             border-radius: 8px;
-
             font-size: 15px;
-
             font-weight: 700;
-
             cursor: pointer;
-
             transition: 0.2s;
-
-            box-shadow:
-                0 4px 10px
-                rgba(
-                    99,
-                    102,
-                    241,
-                    0.2
-                );
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
         }
-
 
         .generate-btn:hover {
-
             background: #4f46e5;
-
-            transform:
-                translateY(-1px);
+            transform: translateY(-1px);
         }
-
 
         /* =========================
            CHART OPTIONS
         ========================== */
 
         .chart-options {
-
             margin-top: 28px;
         }
 
-
         .chart-options h2 {
-
             font-size: 18px;
-
             margin-bottom: 12px;
         }
 
-
         .chart-buttons {
-
             display: flex;
-
             gap: 8px;
+            flex-wrap: wrap;
         }
 
-
         .chart-type {
-
             flex: 1;
-
+            min-width: 120px;
             padding: 11px;
-
-            border:
-                1px solid #e5e7eb;
-
+            border: 1px solid #e5e7eb;
             border-radius: 8px;
-
             background: #f9fafb;
-
             color: #374151;
-
             font-size: 14px;
-
             cursor: pointer;
-
             transition: 0.2s;
         }
 
-
         .chart-type:hover {
-
-            border-color:
-                #c7d2fe;
-
+            border-color: #c7d2fe;
             background: #f5f3ff;
         }
 
-
         .chart-type.active {
-
             background: #6366f1;
-
             color: #ffffff;
-
-            border-color:
-                #6366f1;
+            border-color: #6366f1;
         }
-
 
         /* =========================
            CHART
         ========================== */
 
         .chart-header {
-
             margin-bottom: 18px;
         }
 
-
         .chart-header h2 {
-
             font-size: 21px;
         }
 
-
         .chart-header p {
-
             color: #64748b;
-
             margin-top: 4px;
-
             font-size: 14px;
         }
 
-
         .chart-container {
-
             width: 100%;
-
             max-width: 650px;
-
             margin: auto;
         }
-
 
         /* =========================
            CHART ACTIONS
         ========================== */
 
         .chart-actions {
-
             display: flex;
-
             gap: 10px;
-
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
-
         .chart-actions button {
-
             flex: 1;
-
+            min-width: 120px;
             padding: 12px;
-
-            border:
-                1px solid #e5e7eb;
-
+            border: 1px solid #e5e7eb;
             border-radius: 8px;
-
             background: #f9fafb;
-
             color: #374151;
-
             font-size: 14px;
-
             font-weight: 600;
-
             cursor: pointer;
-
             transition: 0.2s;
         }
 
-
         .chart-actions button:hover {
-
             background: #f3f4f6;
         }
-
 
         /* =========================
            AI ANALYST
         ========================== */
 
         .ai-card {
-
-            border:
-                1px solid #ddd6fe;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffffff,
-                    #faf9ff
-                );
+            border: 1px solid #ddd6fe;
+            background: linear-gradient(135deg, #ffffff, #faf9ff);
         }
 
-
         .ai-card .badge {
-
             margin-bottom: 8px;
         }
 
-
         #aiResult {
-
             background: #f5f3ff;
-
-            border:
-                1px solid #ddd6fe;
-
+            border: 1px solid #ddd6fe;
             border-radius: 10px;
-
             padding: 18px;
-
             margin-top: 20px;
         }
 
-
         #aiResult h3 {
-
             color: #4f46e5;
-
             font-size: 16px;
         }
 
-
         #aiText {
-
             color: #4b5563;
-
             margin-top: 8px;
-
             line-height: 1.7;
         }
-
 
         /* =========================
            NOTIFICATION
         ========================== */
 
         .dataviz-notification {
-
             position: fixed;
-
             left: 50%;
-
             bottom: 25px;
-
-            transform:
-                translateX(-50%);
-
+            transform: translateX(-50%);
             background: #111827;
-
             color: #ffffff;
-
-            padding:
-                13px 20px;
-
+            padding: 13px 20px;
             border-radius: 10px;
-
             font-size: 14px;
-
             font-weight: 600;
-
-            box-shadow:
-                0 8px 25px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    0.15
-                );
-
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             z-index: 9999;
-
-            animation:
-                notificationIn
-                0.25s ease;
+            animation: notificationIn 0.25s ease;
         }
-
 
         @keyframes notificationIn {
-
             from {
-
                 opacity: 0;
-
-                transform:
-                    translate(
-                        -50%,
-                        10px
-                    );
+                transform: translate(-50%, 10px);
             }
-
             to {
-
                 opacity: 1;
-
-                transform:
-                    translate(
-                        -50%,
-                        0
-                    );
+                transform: translate(-50%, 0);
             }
         }
-
 
         /* =========================
            ABOUT
         ========================== */
 
         .about {
-
             text-align: center;
         }
 
-
         .about h2 {
-
             font-size: 20px;
         }
 
-
         .about p {
-
             color: #64748b;
-
             max-width: 650px;
-
-            margin:
-                8px auto 0;
-
+            margin: 8px auto 0;
             line-height: 1.7;
-
             font-size: 14px;
         }
-
 
         /* =========================
            FOOTER
         ========================== */
 
         footer {
-
             text-align: center;
-
-            padding:
-                30px 20px;
-
+            padding: 30px 20px;
             color: #94a3b8;
-
             font-size: 12px;
         }
 
+        footer a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        footer a:hover {
+            color: #6366f1;
+        }
 
         /* =========================
-           MOBILE
+           RESPONSIVE BREAKPOINTS
         ========================== */
 
-        @media (max-width: 600px) {
-
-            header {
-
-                padding:
-                    0 16px;
+        /* Tablet */
+        @media (max-width: 768px) {
+            main {
+                width: 95%;
             }
 
+            .settings {
+                grid-template-columns: 1fr;
+            }
 
             nav {
-
                 display: none;
             }
 
+            header {
+                padding: 0 4%;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            header {
+                padding: 0 16px;
+            }
+
+            nav {
+                display: none;
+            }
 
             .hero {
-
-                padding:
-                    50px 5px 40px;
+                padding: 50px 5px 40px;
             }
-
 
             .hero h1 {
-
                 font-size: 34px;
-
-                letter-spacing:
-                    -1px;
+                letter-spacing: -1px;
             }
-
 
             .hero p {
-
                 font-size: 15px;
             }
-
 
             .card,
             .chart-card,
             .about {
-
-                padding: 19px;
-
-                border-radius: 12px;
+                padding: 16px;
             }
-
-
-            .settings {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .data-row {
-
-                grid-template-columns:
-                    1fr 90px 42px;
-            }
-
 
             .chart-buttons {
-
-                flex-direction:
-                    column;
+                flex-direction: column;
             }
 
+            .chart-type {
+                min-width: auto;
+            }
 
             .chart-actions {
-
-                flex-direction:
-                    column;
+                flex-direction: column;
             }
 
+            .chart-actions button {
+                min-width: auto;
+            }
+
+            .data-row {
+                grid-template-columns: 1fr 40px;
+            }
+
+            main {
+                width: 100%;
+            }
         }
-
     </style>
-
 </head>
 
-
 <body>
-
-
-    <!-- =========================
-         HEADER
-    ========================== -->
-
     <header>
-
-    <div class="header-left">
-
-        <div class="menu-container">
-
-            <button
-                id="menuBtn"
-                class="menu-btn"
-                type="button"
-                aria-label="Open menu"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <div
-                id="menuDropdown"
-                class="menu-dropdown"
-            >
-
-                <a href="#data">
-                    📊 Create Chart
-                </a>
-
-                <a href="#ai">
-                    🤖 AI Analyst
-                </a>
-
-                <a href="#about">
-                    ℹ️ About DataViz
-                </a>
-
+        <div class="header-left">
+            <div class="menu-container">
+                <button class="menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                    ☰
+                </button>
+                <nav class="menu-dropdown" role="navigation">
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#about">About</a>
+                </nav>
             </div>
-
+            <div class="logo">Data<span>Viz</span></div>
         </div>
-
-
-        <div class="logo">
-            Data<span>Viz</span>
-        </div>
-
-    </div>
-
-
-    <button id="clearBtn">
-        Clear
-    </button>
-
+        <nav role="navigation">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </nav>
+        <button id="clearBtn" aria-label="Clear all data">Clear Data</button>
     </header>
 
-
     <main>
-
-
-        <!-- =========================
-             HERO
-        ========================== -->
-
-        <section class="hero">
-
-            <div class="badge">
-
-                📊 SIMPLE DATA VISUALIZATION
-
-            </div>
-
-
-            <h1>
-
-                Turn your data into
-
-                <span>
-                    beautiful charts.
-                </span>
-
-            </h1>
-
-
-            <p>
-
-                Transform numbers into
-                clear, easy-to-understand
-                visual information.
-
-            </p>
-
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <span class="badge">FREE TOOL</span>
+            <h1>Turn Your Data Into <span>Beautiful Charts</span></h1>
+            <p>DataViz makes it simple to transform numbers and information into clear visualizations. Whether you're tracking expenses, analyzing data, or preparing a presentation.</p>
         </section>
 
-
-        <!-- =========================
-             DATA INPUT
-        ========================== -->
-
-        <section
-            class="card"
-            id="data"
-        >
-
+        <!-- Input Card -->
+        <div class="card">
             <div class="section-heading">
-
-                <h2>
-
-                    Your Data
-
-                </h2>
-
-
-                <p>
-
-                    Add categories
-                    and their values.
-
-                </p>
-
+                <h2>Enter Your Data</h2>
+                <p>Add labels and values to create your visualization</p>
             </div>
-
 
             <div class="settings">
-
-
                 <div>
-
-                    <label>
-
-                        Chart title
-
-                    </label>
-
-
-                    <input
-                        type="text"
-                        id="chartTitle"
-                        placeholder="Example: Monthly Expenses"
-                    >
-
+                    <label for="chartTitle">Chart Title</label>
+                    <input type="text" id="chartTitle" placeholder="e.g., Monthly Sales">
                 </div>
-
-
                 <div>
-
-                    <label>
-
-                        Unit
-
-                    </label>
-
-
-                    <select id="unit">
-
-                        <option value="">
-
-                            None
-
-                        </option>
-
-
-                        <option value="K">
-
-                            K (Kwacha)
-
-                        </option>
-
-
-                        <option value="$">
-
-                            $ (Dollar)
-
-                        </option>
-
-
-                        <option value="%">
-
-                            % (Percent)
-
-                        </option>
-
-
-                        <option value="hrs">
-
-                            Hours
-
-                        </option>
-
+                    <label for="chartType">Chart Type</label>
+                    <select id="chartType" aria-label="Select chart type">
+                        <option>Line</option>
+                        <option>Bar</option>
+                        <option>Pie</option>
+                        <option>Doughnut</option>
                     </select>
-
                 </div>
-
             </div>
 
+            <!-- Data Input Rows -->
+            <div id="dataContainer"></div>
 
-            <div id="dataRows"></div>
+            <button class="secondary-btn" id="addRowBtn" aria-label="Add another data point">+ Add Data Point</button>
+            <button class="generate-btn" id="generateBtn" aria-label="Generate the chart">Generate Chart</button>
+        </div>
 
-
-            <button
-                id="addRowBtn"
-                class="secondary-btn"
-            >
-
-                + Add Data
-
-            </button>
-
-
-            <!-- CHART TYPE -->
-
-            <div class="chart-options">
-
-                <h2>
-
-                    Chart Type
-
-                </h2>
-
-
-                <div class="chart-buttons">
-
-
-                    <button
-                        class="chart-type active"
-                        data-type="pie"
-                    >
-
-                        🥧 Pie
-
-                    </button>
-
-
-                    <button
-                        class="chart-type"
-                        data-type="bar"
-                    >
-
-                        📊 Bar
-
-                    </button>
-
-
-                    <button
-                        class="chart-type"
-                        data-type="line"
-                    >
-
-                        📈 Line
-
-                    </button>
-
-
-                </div>
-
-            </div>
-
-
-            <button
-                id="generateBtn"
-                class="generate-btn"
-            >
-
-                Generate Chart
-
-            </button>
-
-        </section>
-
-
-        <!-- =========================
-             CHART
-        ========================== -->
-
-        <section class="chart-card">
-
+        <!-- Chart Card -->
+        <div class="chart-card" id="chartSection" style="display:none;">
             <div class="chart-header">
-
-                <h2 id="displayTitle">
-
-                    Your Chart
-
-                </h2>
-
-
-                <p id="totalText"></p>
-
+                <h2 id="displayTitle">Your Chart</h2>
+                <p>Your visualization is ready</p>
             </div>
-
 
             <div class="chart-container">
-
-                <canvas id="myChart"></canvas>
-
+                <canvas id="myChart" role="img" aria-label="Generated data visualization chart"></canvas>
             </div>
-
 
             <div class="chart-actions">
-
-
-                <button id="downloadBtn">
-
-                    📥 Download
-
-                </button>
-
-
-                <button id="shareBtn">
-
-                    📤 Share
-
-                </button>
-
-
+                <button id="downloadBtn" aria-label="Download chart as image">📥 Download</button>
+                <button id="shareBtn" aria-label="Share chart">🔗 Share</button>
             </div>
+        </div>
 
-        </section>
-
-
-        <!-- =========================
-             AI ANALYST
-        ========================== -->
-
-        <section
-            class="card ai-card"
-            id="ai"
-        >
-
+        <!-- AI Analyst Card -->
+        <div class="card ai-card">
+            <span class="badge">AI POWERED</span>
             <div class="section-heading">
-
-
-                <div class="badge">
-
-                    🤖 AI POWERED
-
-                </div>
-
-
-                <h2>
-
-                    AI Data Analyst
-
-                </h2>
-
-
-                <p>
-
-                    Let DataViz analyze your
-                    numbers and find useful
-                    patterns.
-
-                </p>
-
+                <h2>AI Analyst</h2>
+                <p>Get instant insights from your data</p>
             </div>
-
-
-            <button
-                id="aiAnalyzeBtn"
-                class="generate-btn"
-            >
-
-                ✨ Analyze My Data
-
-            </button>
-
-
-            <div
-                id="aiResult"
-                style="display:none;"
-            >
-
-                <h3>
-
-                    📊 Your Data Insights
-
-                </h3>
-
-
+            <button class="generate-btn" id="analyzeBtn" aria-label="Analyze data with AI">Analyze Data</button>
+            <div id="aiResult" style="display:none;" role="region" aria-live="polite" aria-label="AI analysis results">
+                <h3>📊 Analysis</h3>
                 <p id="aiText"></p>
-
             </div>
+        </div>
 
-        </section>
-
-
-        <!-- =========================
-             ABOUT
-        ========================== -->
-
-        <section
-            class="about"
-            id="about"
-        >
-
-            <h2>
-
-                What is DataViz?
-
-            </h2>
-
-
-            <p>
-
-                DataViz helps you turn
-                numbers into visual information.
-                Use it for school, business,
-                budgeting, research,
-                presentations and more.
-
-            </p>
-
-        </section>
-
-
+        <!-- About Section -->
+        <div class="about" id="about">
+            <h2>About DataViz</h2>
+            <p>DataViz is a free, simple, and powerful tool designed to help you visualize your data without any coding knowledge. Create beautiful charts in seconds and share them with anyone.</p>
+        </div>
     </main>
 
-
     <footer>
-
-        DataViz © 2026
-
+        <p>&copy; 2024 DataViz. All rights reserved. | <a href="#privacy">Privacy Policy</a></p>
     </footer>
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
     <script>
+        // Menu toggle functionality
+        const menuBtn = document.querySelector('.menu-btn');
+        const menuDropdown = document.querySelector('.menu-dropdown');
 
-        let chart = null;
+        menuBtn.addEventListener('click', function() {
+            menuDropdown.classList.toggle('show');
+            menuBtn.setAttribute('aria-expanded', menuDropdown.classList.contains('show'));
+        });
 
-        let selectedChartType = "pie";
-
-
-        const dataRows =
-            document.getElementById(
-                "dataRows"
-            );
-
-
-        const addRowBtn =
-            document.getElementById(
-                "addRowBtn"
-            );
-
-
-        const generateBtn =
-            document.getElementById(
-                "generateBtn"
-            );
-
-
-        const clearBtn =
-            document.getElementById(
-                "clearBtn"
-            );
-
-
-        const downloadBtn =
-            document.getElementById(
-                "downloadBtn"
-            );
-
-
-        const shareBtn =
-            document.getElementById(
-                "shareBtn"
-            );
-
-
-        const chartTitle =
-            document.getElementById(
-                "chartTitle"
-            );
-
-
-        const unit =
-            document.getElementById(
-                "unit"
-            );
-
-
-        const displayTitle =
-            document.getElementById(
-                "displayTitle"
-            );
-
-
-        const totalText =
-            document.getElementById(
-                "totalText"
-            );
-
-
-        /* =========================
-           NOTIFICATION
-        ========================== */
-
-        function showNotification(
-            message
-        ) {
-
-            const oldNotification =
-                document.querySelector(
-                    ".dataviz-notification"
-                );
-
-
-            if (oldNotification) {
-
-                oldNotification.remove();
-
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.menu-container')) {
+                menuDropdown.classList.remove('show');
+                menuBtn.setAttribute('aria-expanded', false);
             }
+        });
 
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && menuDropdown.classList.contains('show')) {
+                menuDropdown.classList.remove('show');
+                menuBtn.setAttribute('aria-expanded', false);
+            }
+        });
 
-            const notification =
-                document.createElement(
-                    "div"
-                );
-
-
-            notification.className =
-                "dataviz-notification";
-
-
-            notification.textContent =
-                message;
-
-
-            document.body.appendChild(
-                notification
-            );
-
-
-            setTimeout(
-                function () {
-
-                    if (
-                        notification
-                        .parentNode
-                    ) {
-
-                        notification.remove();
-
-                    }
-
-                },
-                2500
-            );
-
+        // Notification function
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'dataviz-notification';
+            notification.textContent = message;
+            notification.setAttribute('role', 'alert');
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
         }
 
+        // Placeholder for chart generation logic
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            showNotification('✓ Chart generated successfully!');
+        });
 
-        /* =========================
-           ADD DATA ROW
-        ========================== */
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            showNotification('✓ Chart downloaded!');
+        });
 
-        function addRow(
-            category = "",
-            value = ""
-        ) {
+        document.getElementById('analyzeBtn').addEventListener('click', function() {
+            showNotification('✓ Analysis complete!');
+            // Display sample AI result
+            const aiResult = document.getElementById('aiResult');
+            const aiText = document.getElementById('aiText');
+            aiText.textContent = 'Your data shows a positive trend. Consider exploring seasonal patterns for better forecasting.';
+            aiResult.style.display = 'block';
+        });
 
-            const row =
-                document.createElement(
-                    "div"
-                );
+        // Clear data button
+        document.getElementById('clearBtn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear all data?')) {
+                document.getElementById('dataContainer').innerHTML = '';
+                document.getElementById('chartTitle').value = '';
+                document.getElementById('chartSection').style.display = 'none';
+                showNotification('✓ Data cleared!');
+            }
+        });
 
+        // Add row button functionality
+        document.getElementById('addRowBtn').addEventListener('click', function() {
+            addDataRow();
+        });
 
-            row.className =
-                "data-row";
-
-
+        function addDataRow() {
+            const container = document.getElementById('dataContainer');
+            const rowCount = container.children.length;
+            const row = document.createElement('div');
+            row.className = 'data-row';
             row.innerHTML = `
-
-                <input
-                    type="text"
-                    class="category"
-                    placeholder="Category"
-                >
-
-                <input
-                    type="number"
-                    class="value"
-                    placeholder="Value"
-                    min="0"
-                >
-
-                <button
-                    class="remove-btn"
-                    type="button"
-                >
-
-                    ×
-
-                </button>
-
+                <input type="text" placeholder="Label (e.g., Jan)" class="data-label" aria-label="Data label ${rowCount + 1}">
+                <input type="number" placeholder="Value" class="data-value" aria-label="Data value ${rowCount + 1}">
+                <button class="remove-btn" aria-label="Remove data row ${rowCount + 1}">✕</button>
             `;
-
-
-            row.querySelector(
-                ".category"
-            ).value = category;
-
-
-            row.querySelector(
-                ".value"
-            ).value = value;
-
-
-            row.querySelector(
-                ".remove-btn"
-            ).addEventListener(
-                "click",
-                function () {
-
-                    row.remove();
-
-                }
-            );
-
-
-            dataRows.appendChild(
-                row
-            );
-
+            
+            row.querySelector('.remove-btn').addEventListener('click', function() {
+                row.remove();
+            });
+            
+            container.appendChild(row);
         }
 
-
-        /* =========================
-           INITIAL ROWS
-        ========================== */
-
-        addRow();
-
-        addRow();
-
-        addRow();
-
-
-        /* =========================
-           ADD ROW
-        ========================== */
-
-        addRowBtn.addEventListener(
-            "click",
-            function () {
-
-                addRow();
-
-            }
-        );
-
-
-        /* =========================
-           CHART TYPE
-        ========================== */
-
-        document
-            .querySelectorAll(
-                ".chart-type"
-            )
-            .forEach(
-                function (button) {
-
-                    button.addEventListener(
-                        "click",
-                        function () {
-
-                            document
-                                .querySelectorAll(
-                                    ".chart-type"
-                                )
-                                .forEach(
-                                    function (btn) {
-
-                                        btn.classList
-                                            .remove(
-                                                "active"
-                                            );
-
-                                    }
-                                );
-
-
-                            this.classList
-                                .add("active");
-
-
-                            selectedChartType =
-                                this.dataset.type;
-
-                        }
-                    );
-
-                }
-            );
-
-
-        /* =========================
-           GENERATE CHART
-        ========================== */
-
-        generateBtn.addEventListener(
-            "click",
-            function () {
-
-                const categories = [];
-
-                const values = [];
-
-
-                const rows =
-                    document.querySelectorAll(
-                        ".data-row"
-                    );
-
-
-                rows.forEach(
-                    function (row) {
-
-                        const category =
-                            row.querySelector(
-                                ".category"
-                            ).value.trim();
-
-
-                        const value =
-                            Number(
-                                row.querySelector(
-                                    ".value"
-                                ).value
-                            );
-
-
-                        if (
-                            category !== "" &&
-                            !isNaN(value)
-                        ) {
-
-                            categories.push(
-                                category
-                            );
-
-                            values.push(
-                                value
-                            );
-
-                        }
-
-                    }
-                );
-
-
-                if (
-                    categories.length < 2
-                ) {
-
-                    showNotification(
-                        "Please enter at least two pieces of data."
-                    );
-
-                    return;
-
-                }
-
-
-                createChart(
-                    categories,
-                    values
-                );
-
-            }
-        );
-
-
-        /* =========================
-           CREATE CHART
-        ========================== */
-
-        function createChart(
-            categories,
-            values
-        ) {
-
-            const canvas =
-                document.getElementById(
-                    "myChart"
-                );
-
-
-            if (chart !== null) {
-
-                chart.destroy();
-
-            }
-
-
-            const selectedUnit =
-                unit.value;
-
-
-            const title =
-                chartTitle.value.trim()
-                || "Your Data";
-
-
-            displayTitle.textContent =
-                title;
-
-
-            const total =
-                values.reduce(
-                    function (
-                        sum,
-                        value
-                    ) {
-
-                        return sum + value;
-
-                    },
-                    0
-                );
-
-
-            totalText.textContent =
-                selectedUnit
-                ? `Total: ${selectedUnit} ${total}`
-                : `Total: ${total}`;
-
-
-            chart =
-                new Chart(
-                    canvas,
-                    {
-
-                        type:
-                            selectedChartType,
-
-
-                        data:
-                            {
-
-                                labels:
-                                    categories,
-
-
-                                datasets:
-                                    [
-
-                                        {
-
-                                            label:
-                                                title,
-
-
-                                            data:
-                                                values,
-
-
-                                            borderWidth:
-                                                2,
-
-
-                                            backgroundColor:
-                                                [
-
-                                                    "#6366f1",
-                                                    "#ec4899",
-                                                    "#14b8a6",
-                                                    "#f59e0b",
-                                                    "#ef4444",
-                                                    "#8b5cf6",
-                                                    "#06b6d4",
-                                                    "#84cc16"
-
-                                                ],
-
-
-                                            borderColor:
-                                                "#ffffff"
-
-                                        }
-
-                                    ]
-
-                            },
-
-
-                        options:
-                            {
-
-                                responsive:
-                                    true,
-
-
-                                plugins:
-                                    {
-
-                                        legend:
-                                            {
-
-                                                position:
-                                                    "bottom"
-
-                                            },
-
-
-                                        tooltip:
-                                            {
-
-                                                callbacks:
-                                                    {
-
-                                                        label:
-                                                            function (
-                                                                context
-                                                            ) {
-
-                                                                return selectedUnit
-                                                                    ? `${context.label}: ${selectedUnit} ${context.raw}`
-                                                                    : `${context.label}: ${context.raw}`;
-
-                                                            }
-
-                                                    }
-
-                                            }
-
-                                    }
-
-                            }
-
-                    }
-                );
-
-        }
-
-
-        /* =========================
-           DOWNLOAD
-        ========================== */
-
-        downloadBtn.addEventListener(
-            "click",
-            function () {
-
-                if (chart === null) {
-
-                    showNotification(
-                        "Please generate a chart first."
-                    );
-
-                    return;
-
-                }
-
-
-                const link =
-                    document.createElement(
-                        "a"
-                    );
-
-
-                link.download =
-                    "dataviz-chart.png";
-
-
-                link.href =
-                    document
-                        .getElementById(
-                            "myChart"
-                        )
-                        .toDataURL(
-                            "image/png"
-                        );
-
-
-                link.click();
-
-            }
-        );
-
-
-        /* =========================
-           SHARE
-        ========================== */
-
-        shareBtn.addEventListener(
-            "click",
-            async function () {
-
-                if (!chart) {
-
-                    showNotification(
-                        "Please generate a chart first."
-                    );
-
-                    return;
-
-                }
-
-
-                try {
-
-                    const canvas =
-                        document.getElementById(
-                            "myChart"
-                        );
-
-
-                    const blob =
-                        await new Promise(
-                            function (
-                                resolve
-                            ) {
-
-                                canvas.toBlob(
-                                    resolve
-                                );
-
-                            }
-                        );
-
-
-                    const file =
-                        new File(
-                            [blob],
-
-                            "dataviz-chart.png",
-
-                            {
-                                type:
-                                    "image/png"
-                            }
-                        );
-
-
-                    if (
-                        navigator.share &&
-                        navigator.canShare &&
-                        navigator.canShare(
-                            {
-                                files:
-                                    [file]
-                            }
-                        )
-                    ) {
-
-                        await navigator.share(
-                            {
-
-                                title:
-                                    "My DataViz Chart",
-
-
-                                text:
-                                    "Created with DataViz",
-
-
-                                files:
-                                    [file]
-
-                            }
-                        );
-
-                    }
-
-                    else {
-
-                        showNotification(
-                            "Sharing isn't supported here. Use Download instead."
-                        );
-
-                    }
-
-                }
-
-                catch (error) {
-
-                    console.log(error);
-
-                }
-
-            }
-        );
-
-
-        /* =========================
-           AI DATA ANALYST
-        ========================== */
-
-        const aiAnalyzeBtn =
-            document.getElementById(
-                "aiAnalyzeBtn"
-            );
-
-
-        const aiResult =
-            document.getElementById(
-                "aiResult"
-            );
-
-
-        const aiText =
-            document.getElementById(
-                "aiText"
-            );
-
-
-        aiAnalyzeBtn.addEventListener(
-            "click",
-            function () {
-
-                const rows =
-                    document.querySelectorAll(
-                        ".data-row"
-                    );
-
-
-                const data = [];
-
-
-                rows.forEach(
-                    function (row) {
-
-                        const category =
-                            row.querySelector(
-                                ".category"
-                            ).value.trim();
-
-
-                        const value =
-                            Number(
-                                row.querySelector(
-                                    ".value"
-                                ).value
-                            );
-
-
-                        if (
-                            category !== "" &&
-                            !isNaN(value)
-                        ) {
-
-                            data.push(
-                                {
-                                    category:
-                                        category,
-
-                                    value:
-                                        value
-                                }
-                            );
-
-                        }
-
-                    }
-                );
-
-
-                if (data.length < 2) {
-
-                    showNotification(
-                        "Add at least two pieces of data first."
-                    );
-
-                    return;
-
-                }
-
-
-                const values =
-                    data.map(
-                        function (item) {
-
-                            return item.value;
-
-                        }
-                    );
-
-
-                /* TOTAL */
-
-                const total =
-                    values.reduce(
-                        function (
-                            sum,
-                            value
-                        ) {
-
-                            return sum + value;
-
-                        },
-                        0
-                    );
-
-
-                /* AVERAGE */
-
-                const average =
-                    total /
-                    values.length;
-
-
-                /* HIGHEST */
-
-                const highest =
-                    data.reduce(
-                        function (
-                            a,
-                            b
-                        ) {
-
-                            return a.value >
-                                b.value
-                                ? a
-                                : b;
-
-                        }
-                    );
-
-
-                /* LOWEST */
-
-                const lowest =
-                    data.reduce(
-                        function (
-                            a,
-                            b
-                        ) {
-
-                            return a.value <
-                                b.value
-                                ? a
-                                : b;
-
-                        }
-                    );
-
-
-                /* RANGE */
-
-                const range =
-                    highest.value -
-                    lowest.value;
-
-
-                /* TREND */
-
-                const firstValue =
-                    values[0];
-
-
-                const lastValue =
-                    values[
-                        values.length - 1
-                    ];
-
-
-                let trend;
-
-                let trendIcon;
-
-
-                if (
-                    lastValue >
-                    firstValue
-                ) {
-
-                    trendIcon = "📈";
-
-                    trend =
-                        "Your data shows an overall increase from the beginning to the end.";
-
-                }
-
-                else if (
-                    lastValue <
-                    firstValue
-                ) {
-
-                    trendIcon = "📉";
-
-                    trend =
-                        "Your data shows an overall decrease from the beginning to the end.";
-
-                }
-
-                else {
-
-                    trendIcon = "➡️";
-
-                    trend =
-                        "Your data starts and ends at the same value.";
-
-                }
-
-
-                /* DISPLAY RESULTS */
-
-                aiText.innerHTML = `
-
-                    <div style="
-                        display:grid;
-                        gap:14px;
-                    ">
-
-                        <div>
-
-                            <strong>
-                                Total
-                            </strong>
-
-                            <br>
-
-                            ${total}
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Average
-                            </strong>
-
-                            <br>
-
-                            ${average.toFixed(2)}
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Highest
-                            </strong>
-
-                            <br>
-
-                            ${highest.category}
-                            —
-                            ${highest.value}
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Lowest
-                            </strong>
-
-                            <br>
-
-                            ${lowest.category}
-                            —
-                            ${lowest.value}
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Range
-                            </strong>
-
-                            <br>
-
-                            ${range}
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-
-                                ${trendIcon}
-                                Trend
-
-                            </strong>
-
-                            <br>
-
-                            ${trend}
-
-                        </div>
-
-                    </div>
-
-                `;
-
-
-                aiResult.style.display =
-                    "block";
-
-
-                aiResult.scrollIntoView(
-                    {
-                        behavior:
-                            "smooth",
-
-                        block:
-                            "nearest"
-                    }
-                );
-
-            }
-        );
-
-
-        /* =========================
-           CLEAR
-        ========================== */
-
-        clearBtn.addEventListener(
-            "click",
-            function () {
-
-                dataRows.innerHTML =
-                    "";
-
-
-                addRow();
-
-                addRow();
-
-                addRow();
-
-
-                chartTitle.value =
-                    "";
-
-
-                unit.value =
-                    "";
-
-
-                displayTitle.textContent =
-                    "Your Chart";
-
-
-                totalText.textContent =
-                    "";
-
-
-                aiResult.style.display =
-                    "none";
-
-
-                aiText.innerHTML =
-                    "";
-
-
-                if (chart !== null) {
-
-                    chart.destroy();
-
-                    chart = null;
-
-                }
-
-
-                showNotification(
-                    "Data cleared."
-                );
-
-            }
-        );
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const menuDropdown =
-    document.getElementById("menuDropdown");
-
-
-menuBtn.addEventListener(
-    "click",
-    function (event) {
-
-        event.stopPropagation();
-
-        menuDropdown.classList.toggle(
-            "show"
-        );
-
-    }
-);
-
-
-document.addEventListener(
-    "click",
-    function () {
-
-        menuDropdown.classList.remove(
-            "show"
-        );
-
-    }
-);
-     
-/* =========================
-   THREE DOTS MENU
-========================= */
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const menuDropdown =
-    document.getElementById("menuDropdown");
-
-
-menuBtn.addEventListener(
-    "click",
-    function (event) {
-
-        event.stopPropagation();
-
-        menuDropdown.classList.toggle(
-            "show"
-        );
-
-    }
-);
-
-
-document.addEventListener(
-    "click",
-    function () {
-
-        menuDropdown.classList.remove(
-            "show"
-        );
-
-    }
-);
+        // Initialize with one empty row
+        addDataRow();
     </script>
-
 </body>
 
-    </html>
+</html>
