@@ -650,7 +650,51 @@
 
     </section>
 
+<!-- AI DATA ANALYST -->
 
+<section class="card ai-card">
+
+    <div class="section-heading">
+
+        <div class="badge">
+            🤖 AI POWERED
+        </div>
+
+        <h2>
+            AI Data Analyst
+        </h2>
+
+        <p>
+            Let DataViz analyze your numbers,
+            find patterns and explain what they mean.
+        </p>
+
+    </div>
+
+    <button
+        id="aiAnalyzeBtn"
+        class="generate-btn">
+
+        ✨ Analyze My Data
+
+    </button>
+
+    <div
+        id="aiResult"
+        style="display:none; margin-top:20px;">
+
+        <h3>
+            📊 Your Data Insights
+        </h3>
+
+        <p
+            id="aiText"
+            style="margin-top:10px; line-height:1.6;">
+        </p>
+
+    </div>
+
+</section>
     <!-- ABOUT -->
 
     <section class="about">
@@ -1195,7 +1239,135 @@ shareBtn.addEventListener(
     }
 );
 
+/* AI DATA ANALYST */
 
+const aiAnalyzeBtn =
+    document.getElementById("aiAnalyzeBtn");
+
+const aiResult =
+    document.getElementById("aiResult");
+
+const aiText =
+    document.getElementById("aiText");
+
+
+aiAnalyzeBtn.addEventListener(
+    "click",
+    function () {
+
+        const rows =
+            document.querySelectorAll(
+                ".data-row"
+            );
+
+        const data = [];
+
+        rows.forEach(row => {
+
+            const category =
+                row.querySelector(
+                    ".category"
+                ).value.trim();
+
+            const value =
+                Number(
+                    row.querySelector(
+                        ".value"
+                    ).value
+                );
+
+            if (
+                category !== "" &&
+                !isNaN(value)
+            ) {
+
+                data.push({
+                    category,
+                    value
+                });
+
+            }
+
+        });
+
+
+        if (data.length < 2) {
+
+            alert(
+                "Add at least two pieces of data first."
+            );
+
+            return;
+
+        }
+
+
+        const values =
+            data.map(
+                item => item.value
+            );
+
+
+        const total =
+            values.reduce(
+                (sum, value) =>
+                    sum + value,
+                0
+            );
+
+
+        const highest =
+            data.reduce(
+                (a, b) =>
+                    a.value > b.value
+                        ? a
+                        : b
+            );
+
+
+        const lowest =
+            data.reduce(
+                (a, b) =>
+                    a.value < b.value
+                        ? a
+                        : b
+            );
+
+
+        aiText.innerHTML = `
+
+            Your total is
+            <strong>${total}</strong>.
+
+            <br><br>
+
+            Your highest value is
+            <strong>
+                ${highest.category}
+            </strong>
+            with
+            <strong>
+                ${highest.value}
+            </strong>.
+
+            <br><br>
+
+            Your lowest value is
+            <strong>
+                ${lowest.category}
+            </strong>
+            with
+            <strong>
+                ${lowest.value}
+            </strong>.
+
+        `;
+
+
+        aiResult.style.display = "block";
+
+    }
+);
 
 /* CLEAR */
 
