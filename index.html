@@ -91,7 +91,56 @@
                 rgba(0, 0, 0, 0.03);
         }
 
+.header-left {
+    display: flex;
 
+    align-items: center;
+
+    gap: 8px;
+}
+
+.menu-container {
+    position: relative;
+}
+
+.menu-btn {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.menu-btn:hover {
+    background: #f3f4f6;
+}
+
+.menu-btn span {
+    width: 22px;
+
+    height: 2px;
+
+    background: #374151;
+
+    border-radius: 5px;
+
+    display: block;
+}
         .logo {
 
             font-size: 24px;
@@ -1004,50 +1053,53 @@
 
     <header>
 
-        <div class="logo">
+    <div class="header-left">
 
-            Data<span>Viz</span>
+        <div class="menu-container">
+
+            <button
+                id="menuBtn"
+                class="menu-btn"
+                type="button"
+                aria-label="Open menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div
+                id="menuDropdown"
+                class="menu-dropdown"
+            >
+
+                <a href="#data">
+                    📊 Create Chart
+                </a>
+
+                <a href="#ai">
+                    🤖 AI Analyst
+                </a>
+
+                <a href="#about">
+                    ℹ️ About DataViz
+                </a>
+
+            </div>
 
         </div>
 
-<div class="menu-container">
 
-    <button
-        id="menuBtn"
-        class="menu-btn"
-        type="button"
-        aria-label="Open menu"
-    >
-        ☰
-    </button>
-
-    <div
-        id="menuDropdown"
-        class="menu-dropdown"
-    >
-
-        <a href="#data">
-            📊 Create Chart
-        </a>
-
-        <a href="#ai">
-            🤖 AI Analyst
-        </a>
-
-        <a href="#about">
-            ℹ️ About DataViz
-        </a>
+        <div class="logo">
+            Data<span>Viz</span>
+        </div>
 
     </div>
 
-</div>
 
-
-        <button id="clearBtn">
-
-            Clear
-
-        </button>
+    <button id="clearBtn">
+        Clear
+    </button>
 
     </header>
 
